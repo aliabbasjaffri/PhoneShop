@@ -1,4 +1,4 @@
-package Examples;
+package Main;
 
 // Note: The xsd schema viewer (in Eclipse) might report errors if you try to view your schemas with an 
 // active internet connection, if so: view (and edit) your xml schemas offline please 
@@ -17,7 +17,7 @@ import java.io.*;
 import javax.xml.bind.*;
 
 //This is a candidate for a name change because you wont deal with a library any more in your conversion
-import Examples.Library;
+
 
 public class JAXB_XMLParser {
 
@@ -30,7 +30,7 @@ public class JAXB_XMLParser {
 	public JAXB_XMLParser() {
 
 		try {
-			jaxbContext = JAXBContext.newInstance("Examples");  // Package that contains ouer classes																													
+			jaxbContext = JAXBContext.newInstance("Main");  // Package that contains ouer classes
 			unmarshaller = jaxbContext.createUnmarshaller();
 		}
 		catch (JAXBException e) {

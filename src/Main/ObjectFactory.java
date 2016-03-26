@@ -6,18 +6,20 @@
 //
 
 
-package Examples;
+package Main;
+
+import PhoneShop.PhoneShop;
 
 import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
-import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.*;
 import javax.xml.namespace.QName;
+import PhoneShop.*;
 
 
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the Examples package. 
+ * generated in the Main package.
  * <p>An ObjectFactory allows you to programmatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -31,17 +33,18 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Mylibrary_QNAME = new QName("", "mylibrary");
+    private static final String localpart = "phoneShop";
+    private final static QName _PhoneShop_QNAME = new QName("", localpart);
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: Examples
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: Main
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link Library }
+     * Create an instance of {@link PhoneShop }
      * 
      */
     public Library createLibrary() {
@@ -80,13 +83,25 @@ public class ObjectFactory {
         return new Book();
     }
 
+    public Phone createPhone() { return new Phone(); }
+
+    public PhoneLease createPhoneLease() { return new PhoneLease(); }
+
+    public PhoneSale createPhoneSale() { return new PhoneSale(); }
+
+    public Customer createCustomer() { return new Customer(); }
+
+    public Salesman createSalesman() { return new Salesman(); }
+
+    public PhoneShop createPhoneShop() { return new PhoneShop(); }
+
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Library }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PhoneShop }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "mylibrary")
-    public JAXBElement<Library> createMylibrary(Library value) {
-        return new JAXBElement<Library>(_Mylibrary_QNAME, Library.class, null, value);
+    @XmlElementDecl(namespace = "", name = localpart)
+    public JAXBElement<PhoneShop> createMyPhoneShop(PhoneShop value) {
+        return new JAXBElement<PhoneShop>(_PhoneShop_QNAME, PhoneShop.class, null, value);
     }
 
 }

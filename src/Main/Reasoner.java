@@ -1,18 +1,10 @@
-package Examples;
+package Main;
 
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-
-import Examples.Library;
-import Examples.Book;
-import Examples.Member;
-import Examples.Catalog;
-import Examples.Lending;
-
-import Examples.SimpleGUI;
 
 public class
         Reasoner {

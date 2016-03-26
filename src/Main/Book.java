@@ -6,28 +6,30 @@
 //
 
 
-package Examples;
+package Main;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+// I changed  FEW BITS 
 
 /**
- * <p>Java class for Catalog complex type.
+ * <p>Java class for Book complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Catalog">
+ * &lt;complexType name="Book">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="autor" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="location" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="books" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="islend" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,69 +39,96 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Catalog", propOrder = {
-    "name",
-    "url",
+@XmlType(name = "Book", propOrder = {
+    "autor",
+    "title",
+    "isbn",
     "location",
-    "books"
+    "islend"
 })
-public class Catalog {
+public class Book {
 
     @XmlElement(required = true)
-    protected String name;
+    protected String autor;
     @XmlElement(required = true)
-    protected String url;
+    protected String title;
+    @XmlElement(required = true)
+    protected String isbn;
     @XmlElement(required = true)
     protected String location;
     @XmlElement(required = true)
-    protected String books;
+    protected String islend;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the autor property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getAutor() {
+        return autor;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the autor property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setAutor(String value) {
+        this.autor = value;
     }
 
     /**
-     * Gets the value of the url property.
+     * Gets the value of the title property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getUrl() {
-        return url;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * Sets the value of the url property.
+     * Sets the value of the title property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setUrl(String value) {
-        this.url = value;
+    public void setTitle(String value) {
+        this.title = value;
+    }
+
+    /**
+     * Gets the value of the isbn property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIsbn() {
+        return isbn;
+    }
+
+    /**
+     * Sets the value of the isbn property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIsbn(String value) {
+        this.isbn = value;
     }
 
     /**
@@ -127,27 +156,27 @@ public class Catalog {
     }
 
     /**
-     * Gets the value of the books property.
+     * Gets the value of the islend property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getBooks() {
-        return books;
+    public String getIslend() {
+        return islend;
     }
 
     /**
-     * Sets the value of the books property.
+     * Sets the value of the islend property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setBooks(String value) {
-        this.books = value;
+    public void setIslend(String value) {
+        this.islend = value;
     }
 
 }
