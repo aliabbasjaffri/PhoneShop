@@ -55,12 +55,12 @@ public class Reasoner {
 		// basic constructor for the constructors sake :)
 	}
 
-	public void initknowledge() { // load all the library knowledge from XML 
+	void initknowledge() { // load all the library knowledge from XML
 
-		JAXB_XMLParser xmlhandler = new JAXB_XMLParser(); // we need an instance of our parser
+		JAXB_XMLParser xmlHandler = new JAXB_XMLParser(); // we need an instance of our parser
 
 		//This is a candidate for a name change
-		File xmlfiletoload = new File("PhoneShop.xml"); // we need a (CURRENT)  file (xml) to load
+		File xmlFileToLoad = new File("PhoneShop.xml"); // we need a (CURRENT)  file (xml) to load
 
 		// Init synonmys and typo forms in gazetteers
 		phoneShopSyn.add("shop");   	//This is a candidate for a name change
@@ -78,18 +78,31 @@ public class Reasoner {
 		phoneSyn.add("mob");
 		phoneSyn.add("mobil");
 
-		phoneSaleSyn.add("customer"); //All of the following is a candidate for a name change
-		phoneSaleSyn.add("reader");
-		phoneSaleSyn.add("follower");
-		phoneSaleSyn.add("client");
-		phoneSaleSyn.add("member");
-		phoneSaleSyn.add("guy");
+		phoneSaleSyn.add("sold"); //All of the following is a candidate for a name change
+		phoneSaleSyn.add("sell");
+		phoneSaleSyn.add("phones sold");
+		phoneSaleSyn.add("phones sell");
+		phoneSaleSyn.add("phone sold");
 
-		salesmenSyn.add("catalog");  //All of the following is a candidate for a name change
-		salesmenSyn.add("booklist");
-		salesmenSyn.add("inventor");
+		phoneLeaseSyn.add("phone for lease"); //All of the following is a candidate for a name change
+		phoneLeaseSyn.add("lease");
+		phoneLeaseSyn.add("for leasing");
+		phoneLeaseSyn.add("leasing");
+		phoneLeaseSyn.add("leasing plan");
+		phoneLeaseSyn.add("installments");
+		phoneLeaseSyn.add("installment option");
+		phoneLeaseSyn.add("lend");
+		phoneLeaseSyn.add("lending");
+		phoneLeaseSyn.add("lending options");
 
-		phoneLeaseSyn.add(" lending");   //All of the following is a candidate for a name change
+		customerSyn.add("customer");   //All of the following is a candidate for a name change
+		customerSyn.add("customer name");   //All of the following is a candidate for a name change
+		customerSyn.add("customers");   //All of the following is a candidate for a name change
+
+		salesmenSyn.add("salesman");  //All of the following is a candidate for a name change
+		salesmenSyn.add("sales person");
+		salesmenSyn.add("shop keeper");
+		salesmenSyn.add("attendant");
 
 		recentobjectsyn.add(" this");   //All of the following is a candidate for a name change
 		recentobjectsyn.add(" that");
@@ -98,12 +111,11 @@ public class Reasoner {
 		recentobjectsyn.add(" it");
 
 		try {
-			FileInputStream readthatfile = new FileInputStream(xmlfiletoload); // initiate input stream
+			FileInputStream readThatFile = new FileInputStream(xmlFileToLoad); // initiate input stream
 
-			phoneShop = xmlhandler.loadXML(readthatfile);
+			phoneShop = xmlHandler.loadXML(readThatFile);
 
 			// Fill the Lists with the objects data just generated from the xml
-
 			thePhoneList = phoneShop.getPhones();  		//This is a candidate for a name change
 			thePhoneSaleList = phoneShop.getPhonesSold(); 	//This is a candidate for a name change
 			thePhoneLeaseList = phoneShop.getPhonesLeased(); 	//This is a candidate for a name change
@@ -194,111 +206,95 @@ public class Reasoner {
 
 		// ------- Checking the Subject of the Question --------------------------------------
 
-		for (int x = 0; x < phoneSyn.size(); x++) {   //This is a candidate for a name change
-			if (input.contains(phoneSyn.get(x))) {    //This is a candidate for a name change
+		for (String aPhoneSyn : phoneSyn) {   //This is a candidate for a name change
+			if (input.contains(aPhoneSyn)) {    //This is a candidate for a name change
 				classtype = thePhoneList;             //This is a candidate for a name change
-				
-				input = input.replace(phoneSyn.get(x), "<b>"+ phoneSyn.get(x)+"</b>");
-				
+				input = input.replace(aPhoneSyn, "<b>" + aPhoneSyn + "</b>");
 				subjectcounter = 1;
-				System.out.println("Class type Book recognised.");
+				System.out.println("Class type Phone recognised.");
 			}
 		}
-		for (int x = 0; x < phoneSaleSyn.size(); x++) {  //This is a candidate for a name change
-			if (input.contains(phoneSaleSyn.get(x))) {   //This is a candidate for a name change
-				classtype = theCustomerList;            //This is a candidate for a name change
-				
-				input = input.replace(phoneSaleSyn.get(x), "<b>"+ phoneSaleSyn.get(x)+"</b>");
-				
-				subjectcounter = 1;
-				System.out.println("Class type Member recognised.");
-			}
-		}
-		for (int x = 0; x < salesmenSyn.size(); x++) {  //This is a candidate for a name change
-			if (input.contains(salesmenSyn.get(x))) {   //This is a candidate for a name change
-				classtype = theSalesmenList;            //This is a candidate for a name change
-				
-				input = input.replace(salesmenSyn.get(x), "<b>"+ salesmenSyn.get(x)+"</b>");
-				
-				subjectcounter = 1;	
-				System.out.println("Class type Catalog recognised.");
-			}
-		}
-		for (int x = 0; x < phoneLeaseSyn.size(); x++) {  //This is a candidate for a name change
-			if (input.contains(phoneLeaseSyn.get(x))) {   //This is a candidate for a name change
+		for (String aPhoneSaleSyn : phoneSaleSyn) {  //This is a candidate for a name change
+			if (input.contains(aPhoneSaleSyn)) {   //This is a candidate for a name change
 				classtype = thePhoneSaleList;            //This is a candidate for a name change
-				
-				input = input.replace(phoneLeaseSyn.get(x), "<b>"+ phoneLeaseSyn.get(x)+"</b>");
-				
-				subjectcounter = 1;	
-				System.out.println("Class type Lending recognised.");
+				input = input.replace(aPhoneSaleSyn, "<b>" + aPhoneSaleSyn + "</b>");
+				subjectcounter = 1;
+				System.out.println("Class type Phone Sale recognised.");
+			}
+		}
+		for (String aPhoneLeaseSyn : phoneLeaseSyn) {  //This is a candidate for a name change
+			if (input.contains(aPhoneLeaseSyn)) {   //This is a candidate for a name change
+				classtype = thePhoneLeaseList;            //This is a candidate for a name change
+				input = input.replace(aPhoneLeaseSyn, "<b>" + aPhoneLeaseSyn + "</b>");
+				subjectcounter = 1;
+				System.out.println("Class type Phone Lease recognised.");
+			}
+		}
+		for (String aCustomerSyn : customerSyn) {  //This is a candidate for a name change
+			if (input.contains(aCustomerSyn)) {   //This is a candidate for a name change
+				classtype = theCustomerList;            //This is a candidate for a name change
+				input = input.replace(aCustomerSyn, "<b>" + aCustomerSyn + "</b>");
+				subjectcounter = 1;
+				System.out.println("Class type Customer recognised.");
+			}
+		}
+		for (String aSalesmanSyn : salesmenSyn) {  //This is a candidate for a name change
+			if (input.contains(aSalesmanSyn)) {   //This is a candidate for a name change
+				classtype = theSalesmenList;            //This is a candidate for a name change
+				input = input.replace(aSalesmanSyn, "<b>" + aSalesmanSyn + "</b>");
+				subjectcounter = 1;
+				System.out.println("Class type Salesman recognised.");
 			}
 		}
 		
-		if(subjectcounter == 0){
-			for (int x = 0; x < recentobjectsyn.size(); x++) {  
-				if (input.contains(recentobjectsyn.get(x))) {
+		if(subjectcounter == 0)
+		{
+			for (String aRecentobjectsyn : recentobjectsyn) {
+				if (input.contains(aRecentobjectsyn)) {
 					classtype = theRecentThing;
-					
-					input = input.replace(recentobjectsyn.get(x), "<b>"+recentobjectsyn.get(x)+"</b>");
-					
+					input = input.replace(aRecentobjectsyn, "<b>" + aRecentobjectsyn + "</b>");
 					subjectcounter = 1;
-					System.out.println("Class type recognised as"+recentobjectsyn.get(x));
+					System.out.println("Class type recognised as" + aRecentobjectsyn);
 				}
 			}
 		}
-
 		// More than one subject in question + Library ...
 		// "Does the Library has .. Subject 2 ?"
 
 		System.out.println("subjectcounter = "+subjectcounter);
 
-		for (int x = 0; x < phoneShopSyn.size(); x++) {  //This is a candidate for a name change
-
-			if (input.contains(phoneShopSyn.get(x))) {   //This is a candidate for a name change
-
+		for (String aPhoneShopSyn : phoneShopSyn) {  //This is a candidate for a name change
+			if (input.contains(aPhoneShopSyn)) {   //This is a candidate for a name change
 				// Problem: "How many Books does the Library have ?" -> classtype = Library
 				// Solution:
-				
 				if (subjectcounter == 0) { // Library is the first subject in the question
-					
-					input = input.replace(phoneShopSyn.get(x), "<b>"+ phoneShopSyn.get(x)+"</b>");
-					
+					input = input.replace(aPhoneShopSyn, "<b>" + aPhoneShopSyn + "</b>");
 					classtype = thePhoneShopList;        //This is a candidate for a name change
-
-					System.out.println("class type Library recognised");		
-
+					System.out.println("class type Phone Shop recognised");
 				}
 			}
 		}
 
 		// Compose Method call and generate answerVector
 
-		if (questiontype == "amount") { // Number of Subject
-
+		if (questiontype.equals("amount")) { // Number of Subject
 			Integer numberof = Count(classtype);
-
 			answer=("The number of "
 					+ classtype.get(0).getClass().getSimpleName() + "s is "
 					+ numberof + ".");
-
 			Answered = 1; // An answer was given
-
 		}
 
-		if (questiontype == "list") { // List all Subjects of a kind
-
+		if (questiontype.equals("list")) { // List all Subjects of a kind
 			answer=("You asked for the listing of all "
 					+ classtype.get(0).getClass().getSimpleName() + "s. <br>"
 					+ "We have the following "
 					+ classtype.get(0).getClass().getSimpleName() + "s:"
 					+ ListAll(classtype));
 			Answered = 1; // An answer was given
-
 		}
 
-		if (questiontype == "checkfor") { // test for a certain Subject instance
-
+		if (questiontype.equals("checkfor")) { // test for a certain Subject instance
 			Vector<String> check = CheckFor(classtype, input);
 			answer=(check.get(0));
 			Answered = 1; // An answer was given
@@ -328,24 +324,20 @@ public class Reasoner {
 			Answered = 1; // An answer was given
 		}
 
-		if ((questiontype == "intent" && classtype == thePhoneList)
-				||(questiontype == "intent" && classtype == theRecentThing)) {
-
+		if ((questiontype.equals("intent") && classtype == thePhoneList)
+				|| (questiontype.equals("intent") && classtype == theRecentThing))
+		{
 			// Can I lend the book or not (Can I lent "it" or not)
 			answer=("You "+ BookAvailable(classtype, input));
 			Answered = 1; // An answer was given
 		}
 
-		if (questiontype == "farewell") {       // Reply to a farewell
-			
+		if (questiontype.equals("farewell")) {       // Reply to a farewell
 			answer=("You are welcome.");
-
 			Answered = 1; // An answer was given
 		}
 		
-		
 		if (Answered == 0) { // No answer was given
-
 			answer=("Sorry I didn't understand that.");
 		}
 
