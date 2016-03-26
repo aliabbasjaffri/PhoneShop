@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Vector;
 import PhoneShop.*;
 
-public class Reasoner {
+class Reasoner {
 
 	// The main Class Object holding the Domain knowledge
 
@@ -16,40 +16,40 @@ public class Reasoner {
 	// Path to YOUR-PROJECTROOT-IN-WORKSPACE\xjc.bat yourschemaname.xsd -d src
 	// -p yourclasspackagename
 
-	public PhoneShop phoneShop; //This is a candidate for a name change
+	private PhoneShop phoneShop; //This is a candidate for a name change
 
-	public SimpleGUI Myface;
+	private SimpleGUI Myface;
 
 	// The lists holding the class instances of all domain entities
-	public List thePhoneShopList = new ArrayList(); //This is a candidate for a name change
-	public List thePhoneList = new ArrayList();    //This is a candidate for a name change
-	public List thePhoneSaleList = new ArrayList(); //This is a candidate for a name change
-	public List thePhoneLeaseList = new ArrayList(); //This is a candidate for a name change
-	public List theCustomerList = new ArrayList();  //This is a candidate for a name change
-	public List theSalesmenList = new ArrayList(); //This is a candidate for a name change
-	public List theRecentThing = new ArrayList();
+	private List thePhoneShopList = new ArrayList(); //This is a candidate for a name change
+	private List thePhoneList = new ArrayList();    //This is a candidate for a name change
+	private List thePhoneSaleList = new ArrayList(); //This is a candidate for a name change
+	private List thePhoneLeaseList = new ArrayList(); //This is a candidate for a name change
+	private List theCustomerList = new ArrayList();  //This is a candidate for a name change
+	private List theSalesmenList = new ArrayList(); //This is a candidate for a name change
+	private List theRecentThing = new ArrayList();
 
 	// Gazetteers to store synonyms for the domain entities names
-	public Vector<String> phoneShopSyn = new Vector<String>();  //This is a candidate for a name change
-	public Vector<String> phoneSyn = new Vector<String>();     //This is a candidate for a name change
-	public Vector<String> phoneSaleSyn = new Vector<String>();   //This is a candidate for a name change
-	public Vector<String> phoneLeaseSyn = new Vector<String>();  //This is a candidate for a name change
-	public Vector<String> customerSyn = new Vector<String>();  //This is a candidate for a name change
-	public Vector<String> salesmenSyn = new Vector<String>();  //This is a candidate for a name change
-	public Vector<String> recentobjectsyn = new Vector<String>();
+	private Vector<String> phoneShopSyn = new Vector<String>();  //This is a candidate for a name change
+	private Vector<String> phoneSyn = new Vector<String>();     //This is a candidate for a name change
+	private Vector<String> phoneSaleSyn = new Vector<String>();   //This is a candidate for a name change
+	private Vector<String> phoneLeaseSyn = new Vector<String>();  //This is a candidate for a name change
+	private Vector<String> customerSyn = new Vector<String>();  //This is a candidate for a name change
+	private Vector<String> salesmenSyn = new Vector<String>();  //This is a candidate for a name change
+	private Vector<String> recentobjectsyn = new Vector<String>();
 
-	public String questiontype = "";         // questiontype selects method to use in a query
-	public List classtype = new ArrayList(); // classtype selects which class list to query
+	private String questionType = "";         // questionType selects method to use in a query
+	private List classtype = new ArrayList(); // classtype selects which class list to query
 	public String attributetype = "";        // attributetype selects the attribute to check for in the query
 
-	public Object Currentitemofinterest; // Last Object dealt with
-	public Integer Currentindex;         // Last Index used
+	private Object Currentitemofinterest; // Last Object dealt with
+	private Integer Currentindex;         // Last Index used
 
-	public String tooltipstring = "";
-	public String URL = "";              // URL for Wordnet site
-	public String URL2 = "";             // URL for Wikipedia entry
+	private String tooltipstring = "";
+	private String URL = "";              // URL for Wordnet site
+	private String URL2 = "";             // URL for Wikipedia entry
 
-	public Reasoner(SimpleGUI myface) {
+	Reasoner(SimpleGUI myface) {
 
 		Myface = myface; // reference to GUI to update Tooltip-Text
 		// basic constructor for the constructors sake :)
@@ -132,12 +132,12 @@ public class Reasoner {
 		}
 	}
 
-	public  Vector<String> generateAnswer(String input) { // Generate an answer (String Vector)
+	Vector<String> generateAnswer(String input) { // Generate an answer (String Vector)
 
 		Vector<String> out = new Vector<String>();
 		out.clear();                 // just to make sure this is a new and clean vector
-		
-		questiontype = "none";
+
+		questionType = "none";
 
 		Integer Answered = 0;        // check if answer was generated
 
@@ -155,21 +155,34 @@ public class Reasoner {
 
 		// ----- Check for the kind of question (number, location, etc)------------------------------
 
-		if (input.contains("how many")){questiontype = "amount"; input = input.replace("how many", "<b>how many</b>");} 
-		if (input.contains("number of")){questiontype = "amount"; input = input.replace("number of", "<b>number of</b>");}
-		if (input.contains("amount of")){questiontype = "amount"; input = input.replace("amount of", "<b>amount of</b>");} 
-		if (input.contains("count")){questiontype = "amount"; input = input.replace("count", "<b>count</b>");}
+		if (input.contains("how many")){
+			questionType = "amount"; input = input.replace("how many", "<b>how many</b>");}
+		if (input.contains("number of")){
+			questionType = "amount"; input = input.replace("number of", "<b>number of</b>");}
+		if (input.contains("amount of")){
+			questionType = "amount"; input = input.replace("amount of", "<b>amount of</b>");}
+		if (input.contains("count")){
+			questionType = "amount"; input = input.replace("count", "<b>count</b>");}
 
-		if (input.contains("what kind of")){questiontype = "list"; input = input.replace("what kind of", "<b>what kind of</b>");}
-		if (input.contains("list all")){questiontype = "list"; input = input.replace("list all", "<b>list all</b>");}
-		if (input.contains("diplay all")){questiontype = "list"; input = input.replace("diplay all", "<b>diplay all</b>");}
+		if (input.contains("what kind of")){
+			questionType = "list"; input = input.replace("what kind of", "<b>what kind of</b>");}
+		if (input.contains("list all")){
+			questionType = "list"; input = input.replace("list all", "<b>list all</b>");}
+		if (input.contains("diplay all")){
+			questionType = "list"; input = input.replace("diplay all", "<b>diplay all</b>");}
 
-		if (input.contains("is there a")){questiontype = "checkfor"; input = input.replace("is there a", "<b>is there a</b>");}
-		if (input.contains("i am searching")){questiontype = "checkfor"; input = input.replace("i am searching", "<b>i am searching</b>");}
-		if (input.contains("i am looking for")){questiontype = "checkfor"; input = input.replace("i am looking for", "<b>i am looking for</b>");}
-		if (input.contains("do you have")&&!input.contains("how many")){questiontype = "checkfor";input = input.replace("do you have", "<b>do you have</b>");}
-		if (input.contains("i look for")){questiontype = "checkfor"; input = input.replace("i look for", "<b>i look for</b>");}
-		if (input.contains("is there")){questiontype = "checkfor"; input = input.replace("is there", "<b>is there</b>");}
+		if (input.contains("is there a")){
+			questionType = "checkfor"; input = input.replace("is there a", "<b>is there a</b>");}
+		if (input.contains("i am searching")){
+			questionType = "checkfor"; input = input.replace("i am searching", "<b>i am searching</b>");}
+		if (input.contains("i am looking for")){
+			questionType = "checkfor"; input = input.replace("i am looking for", "<b>i am looking for</b>");}
+		if (input.contains("do you have")&&!input.contains("how many")){
+			questionType = "checkfor";input = input.replace("do you have", "<b>do you have</b>");}
+		if (input.contains("i look for")){
+			questionType = "checkfor"; input = input.replace("i look for", "<b>i look for</b>");}
+		if (input.contains("is there")){
+			questionType = "checkfor"; input = input.replace("is there", "<b>is there</b>");}
 
 		if (input.contains("where") 
 				|| input.contains("can't find")
@@ -177,7 +190,7 @@ public class Reasoner {
 				|| input.contains("way to"))
 
 		{
-			questiontype = "location";
+			questionType = "location";
 			System.out.println("Find Location");
 		}
 		if (input.contains("can i lend") 
@@ -189,7 +202,7 @@ public class Reasoner {
 				|| input.contains("i want to borrow"))
 
 		{
-			questiontype = "intent";
+			questionType = "intent";
 			System.out.println("Find BookAvailability");
 		}
 		
@@ -199,7 +212,7 @@ public class Reasoner {
 				|| input.contains("cool thank")) 			
 
 		{
-			questiontype = "farewell";
+			questionType = "farewell";
 			System.out.println("farewell");
 		}
 
@@ -277,7 +290,7 @@ public class Reasoner {
 
 		// Compose Method call and generate answerVector
 
-		if (questiontype.equals("amount")) { // Number of Subject
+		if (questionType.equals("amount")) { // Number of Subject
 			Integer numberof = Count(classtype);
 			answer=("The number of "
 					+ classtype.get(0).getClass().getSimpleName() + "s is "
@@ -285,7 +298,7 @@ public class Reasoner {
 			Answered = 1; // An answer was given
 		}
 
-		if (questiontype.equals("list")) { // List all Subjects of a kind
+		if (questionType.equals("list")) { // List all Subjects of a kind
 			answer=("You asked for the listing of all "
 					+ classtype.get(0).getClass().getSimpleName() + "s. <br>"
 					+ "We have the following "
@@ -294,7 +307,7 @@ public class Reasoner {
 			Answered = 1; // An answer was given
 		}
 
-		if (questiontype.equals("checkfor")) { // test for a certain Subject instance
+		if (questionType.equals("checkfor")) { // test for a certain Subject instance
 			Vector<String> check = CheckFor(classtype, input);
 			answer=(check.get(0));
 			Answered = 1; // An answer was given
@@ -314,7 +327,7 @@ public class Reasoner {
 
 		// Location Question in Pronomial form "Where can i find it"
 
-		if (questiontype.equals("location")) {   // We always expect a pronomial question to refer to the last
+		if (questionType.equals("location")) {   // We always expect a pronomial question to refer to the last
 											// object questioned for
 			answer=("You can find the "
 					+ classtype.get(0).getClass().getSimpleName() + " " + "at "
@@ -322,15 +335,15 @@ public class Reasoner {
 			Answered = 1; // An answer was given
 		}
 
-		if ((questiontype.equals("intent") && classtype == thePhoneList)
-				|| (questiontype.equals("intent") && classtype == theRecentThing))
+		if ((questionType.equals("intent") && classtype == thePhoneList)
+				|| (questionType.equals("intent") && classtype == theRecentThing))
 		{
 			// Can I lend the book or not (Can I lent "it" or not)
 			answer=("You "+ BookAvailable(classtype, input));
 			Answered = 1; // An answer was given
 		}
 
-		if (questiontype.equals("farewell")) {       // Reply to a farewell
+		if (questionType.equals("farewell")) {       // Reply to a farewell
 			answer=("You are welcome.");
 			Answered = 1; // An answer was given
 		}
@@ -346,10 +359,9 @@ public class Reasoner {
 	}
 
 	// Methods to generate answers for the different kinds of Questions
-	
 	// Answer a question of the "Is a book or "it (meaning a book) available ?" kind
 
-	public String BookAvailable(List thelist, String input) {
+	private String BookAvailable(List thelist, String input) {
 
 		boolean available =true;
 		String answer ="";
@@ -439,7 +451,7 @@ public class Reasoner {
 
 	// Answer a question of the "How many ...." kind 
 	
-	public Integer Count(List thelist) { // List "thelist": List of Class Instances (e.g. thePhoneList)
+	private Integer Count(List thelist) { // List "thelist": List of Class Instances (e.g. thePhoneList)
 
 		//URL = "http://en.wiktionary.org/wiki/"		
 
@@ -512,8 +524,7 @@ public class Reasoner {
 		return listemall;
 	}
 
-	// Answer a question of the "Do you have..." kind 
-	
+	// Answer a question of the "Do you have..." kind
 	private Vector<String> CheckFor(List theList, String input) {
 
 		Vector<String> yesOrNo = new Vector<String>();
@@ -610,8 +621,7 @@ public class Reasoner {
 	}
 
 	//  Method to retrieve the location information from the object (Where is...) kind
-
-	public String Location(List classtypelist, String input) {
+	private String Location(List classtypelist, String input) {
 
 		List thelist = classtypelist;
 		String location = "";
@@ -746,7 +756,7 @@ public class Reasoner {
 		return location;
 	}
 
-	public String testit() {   // test the loaded knowledge by querying for books written by dostoyjewski
+	String testit() {   // test the loaded knowledge by querying for books written by dostoyjewski
 
 		String answer = "";
 
@@ -767,7 +777,7 @@ public class Reasoner {
 		return answer;
 	}
 
-	public String readwebsite(String url) {
+	private String readwebsite(String url) {
 
 		String webtext = "";
 		try {
