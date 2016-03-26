@@ -314,13 +314,11 @@ public class Reasoner {
 
 		// Location Question in Pronomial form "Where can i find it"
 
-		if (questiontype == "location") {   // We always expect a pronomial question to refer to the last
+		if (questiontype.equals("location")) {   // We always expect a pronomial question to refer to the last
 											// object questioned for
-
 			answer=("You can find the "
 					+ classtype.get(0).getClass().getSimpleName() + " " + "at "
 					+ Location(classtype, input));
-
 			Answered = 1; // An answer was given
 		}
 
@@ -460,41 +458,45 @@ public class Reasoner {
 
 	// Answer a question of the "What kind of..." kind
 	
-	public String ListAll(List thelist) {
+	private String ListAll(List thelist) {
 
 		String listemall = "<ul>";
 
 		if (thelist == thePhoneList) {                                  //This is a candidate for a name change
-			for (int i = 0; i < thelist.size(); i++) {
-				Book curbook = (Book) thelist.get(i);                  //This is a candidate for a name change
-				listemall = listemall + "<li>" + (curbook.getTitle() + "</li>");    //This is a candidate for a name change
+			for (Object aPhone : thelist) {
+				Phone phone = (Phone) aPhone;                  //This is a candidate for a name change
+				listemall += "<li>" + (phone.getName() + "</li>");    //This is a candidate for a name change
+			}
+		}
+
+		if (thelist == thePhoneSaleList) {                               //This is a candidate for a name change
+			for (Object aPhoneSale : thelist) {
+				PhoneSale phoneSale = (PhoneSale) aPhoneSale;             //This is a candidate for a name change
+				listemall += "<li>" + (phoneSale.getReceiptID() + "</li>");                //This is a candidate for a name change
+			}
+		}
+
+		if (thelist == thePhoneLeaseList) {                               //This is a candidate for a name change
+			for (Object aPhoneLease : thelist) {
+				PhoneLease phoneLease = (PhoneLease) aPhoneLease;             //This is a candidate for a name change
+				listemall += "<li>" + (phoneLease.getReceiptID() + "</li>");                //This is a candidate for a name change
 			}
 		}
 
 		if (thelist == theCustomerList) {                                //This is a candidate for a name change
-			for (int i = 0; i < thelist.size(); i++) {
-				Member curmem = (Member) thelist.get(i);               //This is a candidate for a name change
-				listemall = listemall + "<li>"                         //This is a candidate for a name change
-						+ (curmem.getSurname() + " " + curmem.getLastname() + "</li>");  //This is a candidate for a name change
+			for (Object aCustomer : thelist) {
+				Customer customer = (Customer) aCustomer;               //This is a candidate for a name change
+				listemall += "<li>" + (customer.getName()  + "</li>");  //This is a candidate for a name change
 			}
 		}
 
 		if (thelist == theSalesmenList) {                               //This is a candidate for a name change
-			for (int i = 0; i < thelist.size(); i++) {
-				Catalog curcat = (Catalog) thelist.get(i);             //This is a candidate for a name change
-				listemall = listemall 
-						+ "<li>" + (curcat.getName() + "</li>");      //This is a candidate for a name change
+			for (Object aSalesman : thelist) {
+				Salesman salesman = (Salesman) aSalesman;             //This is a candidate for a name change
+				listemall += "<li>" + (salesman.getName() + "</li>");      //This is a candidate for a name change
 			}
 		}
-		
-		if (thelist == thePhoneSaleList) {                               //This is a candidate for a name change
-			for (int i = 0; i < thelist.size(); i++) {
-				Lending curlend = (Lending) thelist.get(i);             //This is a candidate for a name change
-				listemall = listemall + "<li>" 
-						+ (curlend.getIsbn() + "</li>");                //This is a candidate for a name change
-			}
-		}
-		
+
 		listemall += "</ul>";
 
 		URL = "http://wordnetweb.princeton.edu/perl/webwn?o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&s="
@@ -512,75 +514,81 @@ public class Reasoner {
 
 	// Answer a question of the "Do you have..." kind 
 	
-	public Vector<String> CheckFor(List thelist, String input) {
+	private Vector<String> CheckFor(List theList, String input) {
 
-		Vector<String> yesorno = new Vector<String>();
+		Vector<String> yesOrNo = new Vector<String>();
 		if (classtype.isEmpty()){
-			yesorno.add("Class not recognised. Please specify if you are searching for a book, catalog, member, or lending?");
+			yesOrNo.add("Class not recognised. Please specify if you are searching for a Phone, Customer, Salesman, Phone Lease or Phone Sale?");
 		} else {
-			yesorno.add("No we don't have such a "
+			yesOrNo.add("No we don't have such a "
 				+ classtype.get(0).getClass().getSimpleName());
 		}
 
 		Integer counter = 0;
 
-		if (thelist == thePhoneList) {                         //This is a candidate for a name change
-
-			for (int i = 0; i < thelist.size(); i++) {
-
-				Book curbook = (Book) thelist.get(i);                           //This is a candidate for a name change
-
-				if (input.contains(curbook.getTitle().toLowerCase())            //This is a candidate for a name change
-						|| input.contains(curbook.getIsbn().toLowerCase())      //This is a candidate for a name change
-						|| input.contains(curbook.getAutor().toLowerCase())) {  //This is a candidate for a name change
-
-					counter = i;
-					yesorno.set(0, "Yes we have such a Book");                  //This is a candidate for a name change
-					yesorno.add(counter.toString());
-					i = thelist.size() + 1; // force break
+		if (theList == thePhoneList) {                         //This is a candidate for a name change
+			for (Object aPhone : theList) {
+				Phone curbook = (Phone) aPhone;                           //This is a candidate for a name change
+				if (input.contains(curbook.getMake().toLowerCase())            //This is a candidate for a name change
+						|| input.contains(curbook.getModel().toLowerCase())      //This is a candidate for a name change
+						|| input.contains(curbook.getType().toLowerCase())) {  //This is a candidate for a name change
+					counter = theList.indexOf(aPhone);
+					yesOrNo.set(0, "Yes we have such a Phone");                  //This is a candidate for a name change
+					yesOrNo.add(counter.toString());
+					break;
 				}
 			}
 		}
 
-		if (thelist == theCustomerList) {                                      //This is a candidate for a name change
-			for (int i = 0; i < thelist.size(); i++) {
-				Member curmem = (Member) thelist.get(i);                      //This is a candidate for a name change
-				if (input.contains(curmem.getSurname().toLowerCase())         //This is a candidate for a name change
-						|| input.contains(curmem.getLastname().toLowerCase()) //This is a candidate for a name change
-						|| input.contains(curmem.getCity().toLowerCase())) {  //This is a candidate for a name change
-
-					counter = i;
-					yesorno.set(0, "Yes we have such a Member");               //This is a candidate for a name change
-					yesorno.add(counter.toString());
-					i = thelist.size() + 1;
+		if (theList == thePhoneSaleList) {                                     //This is a candidate for a name change
+			for (Object aPhoneSale : theList ) {
+				PhoneSale phoneSale = (PhoneSale) aPhoneSale;                  //This is a candidate for a name change
+				if (input.contains(phoneSale.getReceiptID().toLowerCase())          //This is a candidate for a name change
+						|| input.contains(phoneSale.getCustomerID().toLowerCase())){ //This is a candidate for a name change
+					counter = theList.indexOf(aPhoneSale);
+					yesOrNo.set(0, "Yes we have such a Sale");            //This is a candidate for a name change
+					yesOrNo.add(counter.toString());
+					break;
 				}
 			}
 		}
 
-		if (thelist == theSalesmenList) {                                    //This is a candidate for a name change
-			for (int i = 0; i < thelist.size(); i++) {
-				Catalog curcat = (Catalog) thelist.get(i);                  //This is a candidate for a name change
-				if (input.contains(curcat.getName().toLowerCase())          //This is a candidate for a name change
-						|| input.contains(curcat.getUrl().toLowerCase())) { //This is a candidate for a name change
-
-					counter = i;
-					yesorno.set(0, "Yes we have such a Catalog");           //This is a candidate for a name change
-					yesorno.add(counter.toString());
-					i = thelist.size() + 1;
+		if (theList == thePhoneLeaseList) {                                     //This is a candidate for a name change
+			for (Object aPhoneLease : theList ) {
+				PhoneLease phoneLease = (PhoneLease) aPhoneLease;                  //This is a candidate for a name change
+				if (input.contains(phoneLease.getReceiptID().toLowerCase())          //This is a candidate for a name change
+						|| input.contains(phoneLease.getCustomerID().toLowerCase())){ //This is a candidate for a name change
+					counter = theList.indexOf(aPhoneLease);
+					yesOrNo.set(0, "Yes we have such a Lease");            //This is a candidate for a name change
+					yesOrNo.add(counter.toString());
+					break;
 				}
 			}
 		}
-		
-		if (thelist == thePhoneSaleList) {                                     //This is a candidate for a name change
-			for (int i = 0; i < thelist.size(); i++) {
-				Lending curlend = (Lending) thelist.get(i);                  //This is a candidate for a name change
-				if (input.contains(curlend.getIsbn().toLowerCase())          //This is a candidate for a name change
-					|| input.contains(curlend.getMemberid().toLowerCase())){ //This is a candidate for a name change
 
-					counter = i;
-					yesorno.set(0, "Yes we have such a Lending");            //This is a candidate for a name change
-					yesorno.add(counter.toString());
-					i = thelist.size() + 1;
+		if (theList == theCustomerList) {                                      //This is a candidate for a name change
+			for (Object aCustomer : theList){
+				Customer customer = (Customer) aCustomer;                      //This is a candidate for a name change
+				if (input.contains(customer.getName().toLowerCase())         //This is a candidate for a name change
+						|| input.contains(customer.getCustomerID().toLowerCase()) //This is a candidate for a name change
+						|| input.contains(customer.getMobileNumber().toLowerCase())) {  //This is a candidate for a name change
+					counter = theList.indexOf(aCustomer);
+					yesOrNo.set(0, "Yes we have such a Customer");               //This is a candidate for a name change
+					yesOrNo.add(counter.toString());
+					break;
+				}
+			}
+		}
+
+		if (theList == theSalesmenList) {                                    //This is a candidate for a name change
+			for (Object aSalesMan : theList){
+				Salesman salesman = (Salesman) aSalesMan;                  //This is a candidate for a name change
+				if (input.contains(salesman.getName().toLowerCase())          //This is a candidate for a name change
+						|| input.contains(salesman.getSalesManID().toLowerCase())) { //This is a candidate for a name change
+					counter = theList.indexOf(aSalesMan);
+					yesOrNo.set(0, "Yes we have such a Salesman");           //This is a candidate for a name change
+					yesOrNo.add(counter.toString());
+					break;
 				}
 			}
 		}
@@ -598,8 +606,7 @@ public class Reasoner {
 			Myface.setmytooltip(html);
 			Myface.setmyinfobox(URL2);
 		}
-	
-		return yesorno;
+		return yesOrNo;
 	}
 
 	//  Method to retrieve the location information from the object (Where is...) kind
