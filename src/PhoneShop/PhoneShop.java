@@ -1,7 +1,7 @@
 package PhoneShop;
 
 import javax.xml.bind.annotation.*;
-import java.util.List;
+import java.util.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PhoneShop", propOrder = {
@@ -22,15 +22,15 @@ public class PhoneShop
     protected String address;
     @XmlElement(required = true)
     protected String contactNumber;
-    @XmlElement(required = true)
+    @XmlElement(name = "Phone", required = true)
     protected List<Phone> phones;
-    @XmlElement(required = true)
+    @XmlElement(name = "Customer", required = true)
     protected List<Customer> customers;
-    @XmlElement(required = true)
+    @XmlElement(name = "Salesman", required = true)
     protected List<Salesman> salesmen;
-    @XmlElement(required = true)
+    @XmlElement(name = "PhoneLease", required = true)
     protected List<PhoneLease> phonesLeased;
-    @XmlElement(required = true)
+    @XmlElement(name = "PhoneSale", required = true)
     protected List<PhoneSale> phonesSold;
 
     public String getShopName() {
@@ -58,6 +58,8 @@ public class PhoneShop
     }
 
     public List<Phone> getPhones() {
+        if( phones == null )
+            phones = new ArrayList<Phone>();
         return phones;
     }
 
@@ -66,6 +68,8 @@ public class PhoneShop
     }
 
     public List<Customer> getCustomers() {
+        if( customers == null )
+            customers = new ArrayList<Customer>();
         return customers;
     }
 
@@ -74,6 +78,8 @@ public class PhoneShop
     }
 
     public List<Salesman> getSalesmen() {
+        if( salesmen == null )
+            salesmen = new ArrayList<Salesman>();
         return salesmen;
     }
 
@@ -82,6 +88,8 @@ public class PhoneShop
     }
 
     public List<PhoneLease> getPhonesLeased() {
+        if( phonesLeased == null )
+            phonesLeased = new ArrayList<PhoneLease>();
         return phonesLeased;
     }
 
@@ -90,6 +98,8 @@ public class PhoneShop
     }
 
     public List<PhoneSale> getPhonesSold() {
+        if( phonesSold == null )
+            phonesSold = new ArrayList<PhoneSale>();
         return phonesSold;
     }
 

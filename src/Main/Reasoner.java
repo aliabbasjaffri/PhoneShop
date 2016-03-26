@@ -5,9 +5,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import PhoneShop.*;
 
-public class
-        Reasoner {
+public class Reasoner {
 
 	// The main Class Object holding the Domain knowledge
 
@@ -16,26 +16,26 @@ public class
 	// Path to YOUR-PROJECTROOT-IN-WORKSPACE\xjc.bat yourschemaname.xsd -d src
 	// -p yourclasspackagename
 
-	public Library thelibrary; //This is a candidate for a name change
+	public PhoneShop phoneShop; //This is a candidate for a name change
 
 	public SimpleGUI Myface;
 
 	// The lists holding the class instances of all domain entities
-
-	public List theLibraryList = new ArrayList(); //This is a candidate for a name change
-	public List theBookList = new ArrayList();    //This is a candidate for a name change
-	public List theMemberList = new ArrayList();  //This is a candidate for a name change
-	public List theCatalogList = new ArrayList(); //This is a candidate for a name change
-	public List theLendingList = new ArrayList(); //This is a candidate for a name change
-	public List theRecentThing = new ArrayList(); 
+	public List thePhoneShopList = new ArrayList(); //This is a candidate for a name change
+	public List thePhoneList = new ArrayList();    //This is a candidate for a name change
+	public List thePhoneSaleList = new ArrayList(); //This is a candidate for a name change
+	public List thePhoneLeaseList = new ArrayList(); //This is a candidate for a name change
+	public List theCustomerList = new ArrayList();  //This is a candidate for a name change
+	public List theSalesmenList = new ArrayList(); //This is a candidate for a name change
+	public List theRecentThing = new ArrayList();
 
 	// Gazetteers to store synonyms for the domain entities names
-
-	public Vector<String> librarysyn = new Vector<String>();  //This is a candidate for a name change
-	public Vector<String> booksyn = new Vector<String>();     //This is a candidate for a name change
-	public Vector<String> membersyn = new Vector<String>();   //This is a candidate for a name change
-	public Vector<String> catalogsyn = new Vector<String>();  //This is a candidate for a name change
-	public Vector<String> lendingsyn = new Vector<String>();  //This is a candidate for a name change
+	public Vector<String> phoneShopSyn = new Vector<String>();  //This is a candidate for a name change
+	public Vector<String> phoneSyn = new Vector<String>();     //This is a candidate for a name change
+	public Vector<String> phoneSaleSyn = new Vector<String>();   //This is a candidate for a name change
+	public Vector<String> phoneLeaseSyn = new Vector<String>();  //This is a candidate for a name change
+	public Vector<String> customerSyn = new Vector<String>();  //This is a candidate for a name change
+	public Vector<String> salesmenSyn = new Vector<String>();  //This is a candidate for a name change
 	public Vector<String> recentobjectsyn = new Vector<String>();
 
 	public String questiontype = "";         // questiontype selects method to use in a query
@@ -60,41 +60,36 @@ public class
 		JAXB_XMLParser xmlhandler = new JAXB_XMLParser(); // we need an instance of our parser
 
 		//This is a candidate for a name change
-		File xmlfiletoload = new File("/Users/aliabbasjaffri/Downloads/Hadi Work/helpdeskLibrary/Library.xml"); // we need a (CURRENT)  file (xml) to load
+		File xmlfiletoload = new File("PhoneShop.xml"); // we need a (CURRENT)  file (xml) to load
 
 		// Init synonmys and typo forms in gazetteers
+		phoneShopSyn.add("shop");   	//This is a candidate for a name change
+		phoneShopSyn.add("place");		//This is a candidate for a name change
+		phoneShopSyn.add("store");	//This is a candidate for a name change
+		phoneShopSyn.add("market"); 	//This is a candidate for a name change
+		phoneShopSyn.add("phoneshop");		//This is a candidate for a name change
 
-		librarysyn.add("library");   	//This is a candidate for a name change
-		librarysyn.add("place");		//This is a candidate for a name change
-		librarysyn.add("bookstore");	//This is a candidate for a name change
-		librarysyn.add("bookhouse"); 	//This is a candidate for a name change
-		librarysyn.add("libary");		//This is a candidate for a name change
-		librarysyn.add("libraby");		//This is a candidate for a name change
-		librarysyn.add("librarie");		//This is a candidate for a name change
+		phoneSyn.add("phone");    //All of the following is a candidate for a name change
+		phoneSyn.add("phon");
+		phoneSyn.add("mobile");
+		phoneSyn.add("mobile phone");
+		phoneSyn.add("cell");
+		phoneSyn.add("cellphone");
+		phoneSyn.add("mob");
+		phoneSyn.add("mobil");
 
-		booksyn.add("book");    //All of the following is a candidate for a name change
-		booksyn.add("bock");
-		booksyn.add(" media");
-		booksyn.add("read");
-		booksyn.add("boook");
-		booksyn.add(" tome");
-		booksyn.add(" bok");
-		booksyn.add(" record");
-		booksyn.add("booklet");
-		booksyn.add("volume");
+		phoneSaleSyn.add("customer"); //All of the following is a candidate for a name change
+		phoneSaleSyn.add("reader");
+		phoneSaleSyn.add("follower");
+		phoneSaleSyn.add("client");
+		phoneSaleSyn.add("member");
+		phoneSaleSyn.add("guy");
 
-		membersyn.add("customer"); //All of the following is a candidate for a name change
-		membersyn.add("reader");
-		membersyn.add("follower");
-		membersyn.add("client");
-		membersyn.add("member");
-		membersyn.add("guy");
+		salesmenSyn.add("catalog");  //All of the following is a candidate for a name change
+		salesmenSyn.add("booklist");
+		salesmenSyn.add("inventor");
 
-		catalogsyn.add("catalog");  //All of the following is a candidate for a name change
-		catalogsyn.add("booklist");
-		catalogsyn.add("inventor");
-
-		lendingsyn.add(" lending");   //All of the following is a candidate for a name change
+		phoneLeaseSyn.add(" lending");   //All of the following is a candidate for a name change
 
 		recentobjectsyn.add(" this");   //All of the following is a candidate for a name change
 		recentobjectsyn.add(" that");
@@ -105,15 +100,16 @@ public class
 		try {
 			FileInputStream readthatfile = new FileInputStream(xmlfiletoload); // initiate input stream
 
-			thelibrary = xmlhandler.loadXML(readthatfile);
+			phoneShop = xmlhandler.loadXML(readthatfile);
 
 			// Fill the Lists with the objects data just generated from the xml
 
-			theBookList = thelibrary.getBook();  		//This is a candidate for a name change
-			theMemberList = thelibrary.getMember(); 	//This is a candidate for a name change
-			theCatalogList = thelibrary.getCatalog(); 	//This is a candidate for a name change
-			theLendingList = thelibrary.getLending(); 	//This is a candidate for a name change
-			theLibraryList.add(thelibrary);             // force it to be a List, //This is a candidate for a name change
+			thePhoneList = phoneShop.getPhones();  		//This is a candidate for a name change
+			thePhoneSaleList = phoneShop.getPhonesSold(); 	//This is a candidate for a name change
+			thePhoneLeaseList = phoneShop.getPhonesLeased(); 	//This is a candidate for a name change
+			theCustomerList = phoneShop.getCustomers(); 	//This is a candidate for a name change
+			theSalesmenList = phoneShop.getSalesmen(); 	//This is a candidate for a name change
+			thePhoneShopList.add(phoneShop);             // force it to be a List, //This is a candidate for a name change
 
 			System.out.println("List reading");
 		}
@@ -198,41 +194,41 @@ public class
 
 		// ------- Checking the Subject of the Question --------------------------------------
 
-		for (int x = 0; x < booksyn.size(); x++) {   //This is a candidate for a name change
-			if (input.contains(booksyn.get(x))) {    //This is a candidate for a name change
-				classtype = theBookList;             //This is a candidate for a name change
+		for (int x = 0; x < phoneSyn.size(); x++) {   //This is a candidate for a name change
+			if (input.contains(phoneSyn.get(x))) {    //This is a candidate for a name change
+				classtype = thePhoneList;             //This is a candidate for a name change
 				
-				input = input.replace(booksyn.get(x), "<b>"+booksyn.get(x)+"</b>");
+				input = input.replace(phoneSyn.get(x), "<b>"+ phoneSyn.get(x)+"</b>");
 				
 				subjectcounter = 1;
 				System.out.println("Class type Book recognised.");
 			}
 		}
-		for (int x = 0; x < membersyn.size(); x++) {  //This is a candidate for a name change
-			if (input.contains(membersyn.get(x))) {   //This is a candidate for a name change
-				classtype = theMemberList;            //This is a candidate for a name change
+		for (int x = 0; x < phoneSaleSyn.size(); x++) {  //This is a candidate for a name change
+			if (input.contains(phoneSaleSyn.get(x))) {   //This is a candidate for a name change
+				classtype = theCustomerList;            //This is a candidate for a name change
 				
-				input = input.replace(membersyn.get(x), "<b>"+membersyn.get(x)+"</b>");
+				input = input.replace(phoneSaleSyn.get(x), "<b>"+ phoneSaleSyn.get(x)+"</b>");
 				
 				subjectcounter = 1;
 				System.out.println("Class type Member recognised.");
 			}
 		}
-		for (int x = 0; x < catalogsyn.size(); x++) {  //This is a candidate for a name change
-			if (input.contains(catalogsyn.get(x))) {   //This is a candidate for a name change
-				classtype = theCatalogList;            //This is a candidate for a name change
+		for (int x = 0; x < salesmenSyn.size(); x++) {  //This is a candidate for a name change
+			if (input.contains(salesmenSyn.get(x))) {   //This is a candidate for a name change
+				classtype = theSalesmenList;            //This is a candidate for a name change
 				
-				input = input.replace(catalogsyn.get(x), "<b>"+catalogsyn.get(x)+"</b>");
+				input = input.replace(salesmenSyn.get(x), "<b>"+ salesmenSyn.get(x)+"</b>");
 				
 				subjectcounter = 1;	
 				System.out.println("Class type Catalog recognised.");
 			}
 		}
-		for (int x = 0; x < lendingsyn.size(); x++) {  //This is a candidate for a name change
-			if (input.contains(lendingsyn.get(x))) {   //This is a candidate for a name change
-				classtype = theLendingList;            //This is a candidate for a name change
+		for (int x = 0; x < phoneLeaseSyn.size(); x++) {  //This is a candidate for a name change
+			if (input.contains(phoneLeaseSyn.get(x))) {   //This is a candidate for a name change
+				classtype = thePhoneSaleList;            //This is a candidate for a name change
 				
-				input = input.replace(lendingsyn.get(x), "<b>"+lendingsyn.get(x)+"</b>");
+				input = input.replace(phoneLeaseSyn.get(x), "<b>"+ phoneLeaseSyn.get(x)+"</b>");
 				
 				subjectcounter = 1;	
 				System.out.println("Class type Lending recognised.");
@@ -257,18 +253,18 @@ public class
 
 		System.out.println("subjectcounter = "+subjectcounter);
 
-		for (int x = 0; x < librarysyn.size(); x++) {  //This is a candidate for a name change
+		for (int x = 0; x < phoneShopSyn.size(); x++) {  //This is a candidate for a name change
 
-			if (input.contains(librarysyn.get(x))) {   //This is a candidate for a name change
+			if (input.contains(phoneShopSyn.get(x))) {   //This is a candidate for a name change
 
 				// Problem: "How many Books does the Library have ?" -> classtype = Library
 				// Solution:
 				
 				if (subjectcounter == 0) { // Library is the first subject in the question
 					
-					input = input.replace(librarysyn.get(x), "<b>"+librarysyn.get(x)+"</b>");
+					input = input.replace(phoneShopSyn.get(x), "<b>"+ phoneShopSyn.get(x)+"</b>");
 					
-					classtype = theLibraryList;        //This is a candidate for a name change
+					classtype = thePhoneShopList;        //This is a candidate for a name change
 
 					System.out.println("class type Library recognised");		
 
@@ -332,7 +328,7 @@ public class
 			Answered = 1; // An answer was given
 		}
 
-		if ((questiontype == "intent" && classtype == theBookList) 
+		if ((questiontype == "intent" && classtype == thePhoneList)
 				||(questiontype == "intent" && classtype == theRecentThing)) {
 
 			// Can I lend the book or not (Can I lent "it" or not)
@@ -370,7 +366,7 @@ public class
 		Book curbook = new Book();
 		String booktitle="";
 
-		if (thelist == theBookList) {                      //This is a candidate for a name change
+		if (thelist == thePhoneList) {                      //This is a candidate for a name change
 
 			int counter = 0;
 
@@ -388,7 +384,7 @@ public class
 
 					Currentindex = counter;
 					theRecentThing.clear(); 									//Clear it before adding (changing) the
-					classtype = theBookList;                                    //This is a candidate for a name change
+					classtype = thePhoneList;                                    //This is a candidate for a name change
 					theRecentThing.add(classtype.get(Currentindex));
 					booktitle=curbook.getTitle();
 										
@@ -415,9 +411,9 @@ public class
 
 		// check all lendings if they contain the books ISBN
 
-		for (int i = 0; i < theLendingList.size(); i++) {
+		for (int i = 0; i < thePhoneSaleList.size(); i++) {
 
-			Lending curlend = (Lending) theLendingList.get(i);         //This is a candidate for a name change
+			Lending curlend = (Lending) thePhoneSaleList.get(i);         //This is a candidate for a name change
 
 			// If there is a lending with the books ISBN, the book is not available
 
@@ -453,7 +449,7 @@ public class
 
 	// Answer a question of the "How many ...." kind 
 	
-	public Integer Count(List thelist) { // List "thelist": List of Class Instances (e.g. theBookList)
+	public Integer Count(List thelist) { // List "thelist": List of Class Instances (e.g. thePhoneList)
 
 		//URL = "http://en.wiktionary.org/wiki/"		
 
@@ -476,14 +472,14 @@ public class
 
 		String listemall = "<ul>";
 
-		if (thelist == theBookList) {                                  //This is a candidate for a name change
+		if (thelist == thePhoneList) {                                  //This is a candidate for a name change
 			for (int i = 0; i < thelist.size(); i++) {
 				Book curbook = (Book) thelist.get(i);                  //This is a candidate for a name change
 				listemall = listemall + "<li>" + (curbook.getTitle() + "</li>");    //This is a candidate for a name change
 			}
 		}
 
-		if (thelist == theMemberList) {                                //This is a candidate for a name change
+		if (thelist == theCustomerList) {                                //This is a candidate for a name change
 			for (int i = 0; i < thelist.size(); i++) {
 				Member curmem = (Member) thelist.get(i);               //This is a candidate for a name change
 				listemall = listemall + "<li>"                         //This is a candidate for a name change
@@ -491,7 +487,7 @@ public class
 			}
 		}
 
-		if (thelist == theCatalogList) {                               //This is a candidate for a name change
+		if (thelist == theSalesmenList) {                               //This is a candidate for a name change
 			for (int i = 0; i < thelist.size(); i++) {
 				Catalog curcat = (Catalog) thelist.get(i);             //This is a candidate for a name change
 				listemall = listemall 
@@ -499,7 +495,7 @@ public class
 			}
 		}
 		
-		if (thelist == theLendingList) {                               //This is a candidate for a name change
+		if (thelist == thePhoneSaleList) {                               //This is a candidate for a name change
 			for (int i = 0; i < thelist.size(); i++) {
 				Lending curlend = (Lending) thelist.get(i);             //This is a candidate for a name change
 				listemall = listemall + "<li>" 
@@ -536,7 +532,7 @@ public class
 
 		Integer counter = 0;
 
-		if (thelist == theBookList) {                         //This is a candidate for a name change
+		if (thelist == thePhoneList) {                         //This is a candidate for a name change
 
 			for (int i = 0; i < thelist.size(); i++) {
 
@@ -554,7 +550,7 @@ public class
 			}
 		}
 
-		if (thelist == theMemberList) {                                      //This is a candidate for a name change
+		if (thelist == theCustomerList) {                                      //This is a candidate for a name change
 			for (int i = 0; i < thelist.size(); i++) {
 				Member curmem = (Member) thelist.get(i);                      //This is a candidate for a name change
 				if (input.contains(curmem.getSurname().toLowerCase())         //This is a candidate for a name change
@@ -569,7 +565,7 @@ public class
 			}
 		}
 
-		if (thelist == theCatalogList) {                                    //This is a candidate for a name change
+		if (thelist == theSalesmenList) {                                    //This is a candidate for a name change
 			for (int i = 0; i < thelist.size(); i++) {
 				Catalog curcat = (Catalog) thelist.get(i);                  //This is a candidate for a name change
 				if (input.contains(curcat.getName().toLowerCase())          //This is a candidate for a name change
@@ -583,7 +579,7 @@ public class
 			}
 		}
 		
-		if (thelist == theLendingList) {                                     //This is a candidate for a name change
+		if (thelist == thePhoneSaleList) {                                     //This is a candidate for a name change
 			for (int i = 0; i < thelist.size(); i++) {
 				Lending curlend = (Lending) thelist.get(i);                  //This is a candidate for a name change
 				if (input.contains(curlend.getIsbn().toLowerCase())          //This is a candidate for a name change
@@ -653,7 +649,7 @@ public class
 			if (theRecentThing.get(0).getClass().getSimpleName()    
 					.toLowerCase().equals("library")) {                  //This is a candidate for a name change
 
-				location = (thelibrary.getCity() + " " + thelibrary.getStreet() + thelibrary   //This is a candidate for a name change
+				location = (phoneShop.getCity() + " " + phoneShop.getStreet() + phoneShop   //This is a candidate for a name change
 						.getHousenumber());                                           //This is a candidate for a name change
 			}
 
@@ -663,7 +659,7 @@ public class
 
 		else {
 
-			if (thelist == theBookList) {                         //This is a candidate for a name change
+			if (thelist == thePhoneList) {                         //This is a candidate for a name change
 
 				int counter = 0;
 
@@ -679,14 +675,14 @@ public class
 						location = (curbook.getLocation() + " ");
 						Currentindex = counter;
 						theRecentThing.clear(); 									// Clear it before adding (changing) theRecentThing
-						classtype = theBookList;                                    //This is a candidate for a name change
+						classtype = thePhoneList;                                    //This is a candidate for a name change
 						theRecentThing.add(classtype.get(Currentindex));
 						i = thelist.size() + 1; 									// force break
 					}
 				}
 			}
 
-			if (thelist == theMemberList) {                                         //This is a candidate for a name change
+			if (thelist == theCustomerList) {                                         //This is a candidate for a name change
 
 				int counter = 0;
 
@@ -702,14 +698,14 @@ public class
 						location = (curmember.getCity() + " ");
 						Currentindex = counter;
 						theRecentThing.clear(); 										// Clear it before adding (changing) the
-						classtype = theMemberList;            	 						//This is a candidate for a name change
+						classtype = theCustomerList;            	 						//This is a candidate for a name change
 						theRecentThing.add(classtype.get(Currentindex));
 						i = thelist.size() + 1; 				             	        // force break
 					}
 				}
 			}
 
-			if (thelist == theCatalogList) {                                       	 //This is a candidate for a name change
+			if (thelist == theSalesmenList) {                                       	 //This is a candidate for a name change
 
 				int counter = 0;
 
@@ -724,16 +720,16 @@ public class
 						location = (curcatalog.getLocation() + " ");
 						Currentindex = counter;
 						theRecentThing.clear();                                      // Clear it before adding (changing) the	
-						classtype = theCatalogList;                                  //This is a candidate for a name change
+						classtype = theSalesmenList;                                  //This is a candidate for a name change
 						theRecentThing.add(classtype.get(Currentindex));
 						i = thelist.size() + 1;                                      // force break
 					}
 				}
 			}
 
-			if (thelist == theLibraryList) {                                                  //This is a candidate for a name change
+			if (thelist == thePhoneShopList) {                                                  //This is a candidate for a name change
 
-				location = (thelibrary.getCity() + " " + thelibrary.getStreet() + thelibrary  //This is a candidate for a name change
+				location = (phoneShop.getCity() + " " + phoneShop.getStreet() + phoneShop  //This is a candidate for a name change
 						.getHousenumber());                                                   //This is a candidate for a name change
 			}
 		}
@@ -755,11 +751,11 @@ public class
 
 		String answer = "";
 
-		System.out.println("Book List = " + theBookList.size());  //This is a candidate for a name change
+		System.out.println("Book List = " + thePhoneList.size());  //This is a candidate for a name change
 
-		for (int i = 0; i < theBookList.size(); i++) {   // check each book in the List, //This is a candidate for a name change
+		for (int i = 0; i < thePhoneList.size(); i++) {   // check each book in the List, //This is a candidate for a name change
 
-			Book curbook = (Book) theBookList.get(i);    // cast list element to Book Class //This is a candidate for a name change												
+			Book curbook = (Book) thePhoneList.get(i);    // cast list element to Book Class //This is a candidate for a name change
 			System.out.println("Testing Book" + curbook.getAutor());
 
 			if (curbook.getAutor().equalsIgnoreCase("dostoyjewski")) {     // check for the author //This is a candidate for a name change

@@ -15,6 +15,7 @@ package Main;
 
 import java.io.*;
 import javax.xml.bind.*;
+import PhoneShop.*;
 
 //This is a candidate for a name change because you wont deal with a library any more in your conversion
 
@@ -25,12 +26,12 @@ public class JAXB_XMLParser {
 	private Unmarshaller unmarshaller = null;   // unmarshall = genrate objects from an xml file												
 	
 	// This is a candidate for a name change because you wont deal with a library any more in your conversion
-	private Library mynewlib = null;            // the main object containing all data
+	private PhoneShop myPhoneShop = null;            // the main object containing all data
 
 	public JAXB_XMLParser() {
 
 		try {
-			jaxbContext = JAXBContext.newInstance("Main");  // Package that contains ouer classes
+			jaxbContext = JAXBContext.newInstance("Main");  // Package that contains outer classes
 			unmarshaller = jaxbContext.createUnmarshaller();
 		}
 		catch (JAXBException e) {
@@ -38,19 +39,19 @@ public class JAXB_XMLParser {
 	}
 	
 	// Instance objects and return a list with this objects in it
-	public Library loadXML(InputStream fileinputstream) {
+	public PhoneShop loadXML(InputStream fileInputStream) {
 
 		try {
-			Object xmltoobject = unmarshaller.unmarshal(fileinputstream);
+			Object xmlToolObject = unmarshaller.unmarshal(fileInputStream);
 
-			if (mynewlib == null) {
+			if (myPhoneShop == null) {
 
-				// generate the mynewlib object that conatins all info from the xml document
-				mynewlib = (Library) (((JAXBElement) xmltoobject).getValue());
+				// generate the myPhoneShop object that contains all info from the xml document
+				myPhoneShop = (PhoneShop) (((JAXBElement) xmlToolObject).getValue());
 				// The above (Library) is a candidate for a name change because you wont deal with 
 				// a library any more in your conversion
 				
-				return mynewlib; // return Library Objekt
+				return myPhoneShop; // return Library Object
 			}
 		} // try
 
