@@ -33,7 +33,9 @@ public class JAXB_XMLParser {
 			jaxbContext = JAXBContext.newInstance("Main");  // Package that contains outer classes
 			unmarshaller = jaxbContext.createUnmarshaller();
 		}
-		catch (JAXBException e) {
+		catch (JAXBException e)
+		{
+			e.printStackTrace();
 		}
 	}
 	

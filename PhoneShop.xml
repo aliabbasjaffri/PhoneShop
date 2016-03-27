@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--  Our one element xml document, describing one instance of a Library object -->
-<phoneShop >      <!-- the one libraryobject conatining alle the info -->
+<phoneShop>      <!-- the one libraryobject conatining alle the info -->
 	<shopName>My Big PhoneShop</shopName>            <!--  here follow all attributes of the mylibrary object -->
 	<address>Lahore, Pakistan</address>
 	<contactNumber>03314960870</contactNumber>
@@ -50,125 +51,6 @@
 	</Phone>
     <!-- /////////////////End Phones Section-->
 
-    <!-- /////////////////Phone Sale-->
-	<PhoneSale>
-		<receiptID>Joe</receiptID>
-		<customerID>Average</customerID>
-		<salesManID>25</salesManID>
-		<phoneID>J_AV_25</phoneID>
-		<saleDate>01012016</saleDate>
-	</PhoneSale>
-
-	<PhoneSale>
-		<receiptID>Joe</receiptID>
-		<customerID>Average</customerID>
-		<salesManID>25</salesManID>
-		<phoneID>J_AV_25</phoneID>
-		<saleDate>01012016</saleDate>
-	</PhoneSale>
-
-	<PhoneSale>
-		<receiptID>Joe</receiptID>
-		<customerID>Average</customerID>
-		<salesManID>25</salesManID>
-		<phoneID>J_AV_25</phoneID>
-		<saleDate>01012016</saleDate>
-	</PhoneSale>
-
-	<PhoneSale>
-		<receiptID>Joe</receiptID>
-		<customerID>Average</customerID>
-		<salesManID>25</salesManID>
-		<phoneID>J_AV_25</phoneID>
-		<saleDate>01012016</saleDate>
-	</PhoneSale>
-    <!-- /////////////////End Phone Sale-->
-
-    <!-- /////////////////Phone Lease-->
-	<PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
-		<startDate>12345Sn4567#375954Fe4567#</startDate>
-	</PhoneLease>
-
-    <PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
-		<startDate>12345Sn4567#375954Fe4567#</startDate>
-	</PhoneLease>
-
-    <PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
-		<startDate>12345Sn4567#375954Fe4567#</startDate>
-	</PhoneLease>
-
-    <PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
-		<startDate>12345Sn4567#375954Fe4567#</startDate>
-	</PhoneLease>
-    <!-- /////////////////End Phone Lease-->
-
-    "name",
-    "age",
-    "dateOfBirth",
-    "gender"
-    "customerID",
-    "city",
-    "emailAddress",
-    "mobileNumber",
-    "receiptID"
-
-    <!-- /////////////////Salesman-->
-	<Salesman>
-		<name>001</name>
-		<age>S_SO_68</age>
-		<dateOfBirth>12345Sn</dateOfBirth>
-		<gender>12345Sn</gender>
-		<salesManID>01102011</salesManID>
-		<department>22102011</department>
-	</Salesman>
-
-    <Salesman>
-		<name>001</name>
-		<age>S_SO_68</age>
-		<dateOfBirth>12345Sn</dateOfBirth>
-		<gender>12345Sn</gender>
-		<salesManID>01102011</salesManID>
-		<department>22102011</department>
-	</Salesman>
-
-    <Salesman>
-		<name>001</name>
-		<age>S_SO_68</age>
-		<dateOfBirth>12345Sn</dateOfBirth>
-		<gender>12345Sn</gender>
-		<salesManID>01102011</salesManID>
-		<department>22102011</department>
-	</Salesman>
-    <!-- /////////////////End Salesman-->
-
     <!-- /////////////////Customer-->
 
     <Customer>
@@ -184,29 +66,138 @@
     </Customer>
 
     <Customer>
-            <name>001</name>
-            <age>S_SO_68</age>
-            <dateOfBirth>12345Sn</dateOfBirth>
-            <gender>01102011</gender>
-            <customerID>22102011</customerID>
-            <city>22102011</city>
-            <emailAddress>22102011</emailAddress>
-            <mobileNumber>22102011</mobileNumber>
-            <receiptID>22102011</receiptID>
+        <name>001</name>
+        <age>S_SO_68</age>
+        <dateOfBirth>12345Sn</dateOfBirth>
+        <gender>01102011</gender>
+        <customerID>22102011</customerID>
+        <city>22102011</city>
+        <emailAddress>22102011</emailAddress>
+        <mobileNumber>22102011</mobileNumber>
+        <receiptID>22102011</receiptID>
     </Customer>
 
     <Customer>
-            <name>001</name>
-            <age>S_SO_68</age>
-            <dateOfBirth>12345Sn</dateOfBirth>
-            <gender>01102011</gender>
-            <customerID>22102011</customerID>
-            <city>22102011</city>
-            <emailAddress>22102011</emailAddress>
-            <mobileNumber>22102011</mobileNumber>
-            <receiptID>22102011</receiptID>
-        </Customer>
+        <name>001</name>
+        <age>S_SO_68</age>
+        <dateOfBirth>12345Sn</dateOfBirth>
+        <gender>01102011</gender>
+        <customerID>22102011</customerID>
+        <city>22102011</city>
+        <emailAddress>22102011</emailAddress>
+        <mobileNumber>22102011</mobileNumber>
+        <receiptID>22102011</receiptID>
+    </Customer>
 
     <!-- /////////////////End Customer-->
+
+    <!-- /////////////////Salesman-->
+    <Salesman>
+        <name>001</name>
+        <age>S_SO_68</age>
+        <dateOfBirth>12345Sn</dateOfBirth>
+        <gender>12345Sn</gender>
+        <salesManID>01102011</salesManID>
+        <department>22102011</department>
+    </Salesman>
+
+    <Salesman>
+        <name>001</name>
+        <age>S_SO_68</age>
+        <dateOfBirth>12345Sn</dateOfBirth>
+        <gender>12345Sn</gender>
+        <salesManID>01102011</salesManID>
+        <department>22102011</department>
+    </Salesman>
+
+    <Salesman>
+        <name>001</name>
+        <age>S_SO_68</age>
+        <dateOfBirth>12345Sn</dateOfBirth>
+        <gender>12345Sn</gender>
+        <salesManID>01102011</salesManID>
+        <department>22102011</department>
+    </Salesman>
+    <!-- /////////////////End Salesman-->
+
+    <!-- /////////////////Phone Lease-->
+	<PhoneLease>
+		<receiptID>scifiphones</receiptID>
+		<customerID>www.somwhere.uk/scifi</customerID>
+		<salesManID>upper storie left</salesManID>
+		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
+		<terms>12345Sn4567#375954Fe4567#</terms>
+		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
+		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<contractStartDate>11022015</contractStartDate>
+	</PhoneLease>
+
+    <PhoneLease>
+		<receiptID>scifiphones</receiptID>
+		<customerID>www.somwhere.uk/scifi</customerID>
+		<salesManID>upper storie left</salesManID>
+		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
+		<terms>12345Sn4567#375954Fe4567#</terms>
+		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
+		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<contractStartDate>11022015</contractStartDate>
+	</PhoneLease>
+
+    <PhoneLease>
+		<receiptID>scifiphones</receiptID>
+		<customerID>www.somwhere.uk/scifi</customerID>
+		<salesManID>upper storie left</salesManID>
+		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
+		<terms>12345Sn4567#375954Fe4567#</terms>
+		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
+		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<contractStartDate>11022015</contractStartDate>
+	</PhoneLease>
+
+    <PhoneLease>
+		<receiptID>scifiphones</receiptID>
+		<customerID>www.somwhere.uk/scifi</customerID>
+		<salesManID>upper storie left</salesManID>
+		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
+		<terms>12345Sn4567#375954Fe4567#</terms>
+		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
+		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<contractStartDate>11022015</contractStartDate>
+	</PhoneLease>
+    <!-- /////////////////End Phone Lease-->
+
+    <!-- /////////////////Phone Sale-->
+    <PhoneSale>
+        <receiptID>Joe</receiptID>
+        <customerID>Average</customerID>
+        <salesManID>25</salesManID>
+        <phoneID>J_AV_25</phoneID>
+        <saleDate>01012016</saleDate>
+    </PhoneSale>
+
+    <PhoneSale>
+        <receiptID>Joe</receiptID>
+        <customerID>Average</customerID>
+        <salesManID>25</salesManID>
+        <phoneID>J_AV_25</phoneID>
+        <saleDate>01012016</saleDate>
+    </PhoneSale>
+
+    <PhoneSale>
+        <receiptID>Joe</receiptID>
+        <customerID>Average</customerID>
+        <salesManID>25</salesManID>
+        <phoneID>J_AV_25</phoneID>
+        <saleDate>01012016</saleDate>
+    </PhoneSale>
+
+    <PhoneSale>
+        <receiptID>Joe</receiptID>
+        <customerID>Average</customerID>
+        <salesManID>25</salesManID>
+        <phoneID>J_AV_25</phoneID>
+        <saleDate>01012016</saleDate>
+    </PhoneSale>
+    <!-- /////////////////End Phone Sale-->
 
 </phoneShop>     <!-- closing the one libraryobject conatining alle the info -->
