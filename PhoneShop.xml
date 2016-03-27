@@ -1,7 +1,5 @@
-
 <!--  Our one element xml document, describing one instance of a Library object -->
-
-<mylibrary>      <!-- the one libraryobject conatining alle the info -->
+<phoneShop >      <!-- the one libraryobject conatining alle the info -->
 
 	<name>UWL Library</name>            <!--  here follow all attributes of the mylibrary object -->
 	<city>Ealing</city>
@@ -106,4 +104,4 @@
 		<enddate>22102011</enddate>	
 	</Lending>
 
-</mylibrary>     <!-- closing the one libraryobject conatining alle the info -->
+</phoneShop>     <!-- closing the one libraryobject conatining alle the info -->
