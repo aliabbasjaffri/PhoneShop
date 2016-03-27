@@ -54,7 +54,7 @@ class Reasoner {
 		// basic constructor for the constructors sake :)
 	}
 
-	void initknowledge() { // load all the library knowledge from XML
+	void initknowledge() { // load all the PhoneShop knowledge from XML
 
 		JAXB_XMLParser xmlHandler = new JAXB_XMLParser(); // we need an instance of our parser
 
@@ -192,9 +192,8 @@ class Reasoner {
 			questionType = "location";
 			System.out.println("Find Location");
 		}
-		if (input.contains("can i lend") 
-				|| input.contains("can i borrow")
-				|| input.contains("can i get the book")
+		if (input.contains("can i lend")
+				|| input.contains("can i get the phone")
 				|| input.contains("am i able to")
 				|| input.contains("could i lend") 
 				|| input.contains("i want to lend")
@@ -202,7 +201,7 @@ class Reasoner {
 
 		{
 			questionType = "intent";
-			System.out.println("Find BookAvailability");
+			System.out.println("Find phoneAvailability");
 		}
 		
 		if (input.contains("thank you") 
@@ -270,16 +269,16 @@ class Reasoner {
 				}
 			}
 		}
-		// More than one subject in question + Library ...
-		// "Does the Library has .. Subject 2 ?"
+		// More than one subject in question + PhoneShop ...
+		// "Does the PhoneShop has .. Subject 2 ?"
 
 		System.out.println("subjectcounter = "+subjectcounter);
 
 		for (String aPhoneShopSyn : phoneShopSyn) {  //This is a candidate for a name change
 			if (input.contains(aPhoneShopSyn)) {   //This is a candidate for a name change
-				// Problem: "How many Books does the Library have ?" -> classtype = Library
+				// Problem: "How many phones does the PhoneShop have ?" -> classtype = PhoneShop
 				// Solution:
-				if (subjectcounter == 0) { // Library is the first subject in the question
+				if (subjectcounter == 0) { // PhoneShop is the first subject in the question
 					input = input.replace(aPhoneShopSyn, "<b>" + aPhoneShopSyn + "</b>");
 					classtype = thePhoneShopList;        //This is a candidate for a name change
 					System.out.println("class type Phone Shop recognised");
@@ -337,8 +336,8 @@ class Reasoner {
 		if ((questionType.equals("intent") && classtype == thePhoneList)
 				|| (questionType.equals("intent") && classtype == theRecentThing))
 		{
-			// Can I lend the book or not (Can I lent "it" or not)
-			answer=("You "+ phoneAvailable(classtype, input));
+			// Can I lend the phone or not (Can I lent "it" or not)
+			answer=("The "+ phoneAvailable(classtype, input) + " for Lending");
 			Answered = 1; // An answer was given
 		}
 
@@ -358,7 +357,7 @@ class Reasoner {
 	}
 
 	// Methods to generate answers for the different kinds of Questions
-	// Answer a question of the "Is a book or "it (meaning a book) available ?" kind
+	// Answer a question of the "Is a phone or "it (meaning a phone) available ?" kind
 
 	private String phoneAvailable(List theList, String input) {
 
@@ -438,41 +437,35 @@ class Reasoner {
 	// Answer a question of the "What kind of..." kind
 	
 	private String ListAll(List thelist) {
-
 		String listemall = "<ul>";
 
 		if (thelist == thePhoneList) {                                  //This is a candidate for a name change
 			for (Object aPhone : thelist) {
-				Phone phone = (Phone) aPhone;                  //This is a candidate for a name change
-				listemall += "<li>" + (phone.getName() + "</li>");    //This is a candidate for a name change
+				listemall += "<li>" + (((Phone) aPhone).getName() + "</li>");    //This is a candidate for a name change
 			}
 		}
 
 		if (thelist == thePhoneSaleList) {                               //This is a candidate for a name change
 			for (Object aPhoneSale : thelist) {
-				PhoneSale phoneSale = (PhoneSale) aPhoneSale;             //This is a candidate for a name change
-				listemall += "<li>" + (phoneSale.getReceiptID() + "</li>");                //This is a candidate for a name change
+				listemall += "<li>" + (((PhoneSale) aPhoneSale).getReceiptID() + "</li>");                //This is a candidate for a name change
 			}
 		}
 
 		if (thelist == thePhoneLeaseList) {                               //This is a candidate for a name change
 			for (Object aPhoneLease : thelist) {
-				PhoneLease phoneLease = (PhoneLease) aPhoneLease;             //This is a candidate for a name change
-				listemall += "<li>" + (phoneLease.getReceiptID() + "</li>");                //This is a candidate for a name change
+				listemall += "<li>" + (((PhoneLease) aPhoneLease).getReceiptID() + "</li>");                //This is a candidate for a name change
 			}
 		}
 
 		if (thelist == theCustomerList) {                                //This is a candidate for a name change
 			for (Object aCustomer : thelist) {
-				Customer customer = (Customer) aCustomer;               //This is a candidate for a name change
-				listemall += "<li>" + (customer.getName()  + "</li>");  //This is a candidate for a name change
+				listemall += "<li>" + (((Customer) aCustomer).getName()  + "</li>");  //This is a candidate for a name change
 			}
 		}
 
 		if (thelist == theSalesmenList) {                               //This is a candidate for a name change
 			for (Object aSalesman : thelist) {
-				Salesman salesman = (Salesman) aSalesman;             //This is a candidate for a name change
-				listemall += "<li>" + (salesman.getName() + "</li>");      //This is a candidate for a name change
+				listemall += "<li>" + (((Salesman) aSalesman).getName() + "</li>");      //This is a candidate for a name change
 			}
 		}
 
@@ -616,7 +609,7 @@ class Reasoner {
 			}
 		}
 
-		// if a direct noun was used (book, member, etc)
+		// if a direct noun was used
 		else {
 			if (classTypeList == theCustomerList) {                                         //This is a candidate for a name change
 				for(Object aCustomer : classTypeList){
@@ -665,11 +658,11 @@ class Reasoner {
 		return location;
 	}
 
-	String testit() {   // test the loaded knowledge by querying for books written by dostoyjewski
+	String testit() {
 		String answer = "";
 		System.out.println("Phone List = " + thePhoneList.size());  //This is a candidate for a name change
-		for (Object aThePhoneList : thePhoneList) {   // check each book in the List, //This is a candidate for a name change
-			Phone phone = (Phone) aThePhoneList;    // cast list element to Book Class //This is a candidate for a name change
+		for (Object aThePhoneList : thePhoneList) {   // check each phone in the List, //This is a candidate for a name change
+			Phone phone = (Phone) aThePhoneList;    // cast list element to phone Class //This is a candidate for a name change
 			System.out.println("Testing Phone" + phone.getMake());
 
 			if (phone.getName().equalsIgnoreCase("6s")) {     // check for the author //This is a candidate for a name change
