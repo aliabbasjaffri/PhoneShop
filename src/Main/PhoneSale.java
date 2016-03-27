@@ -1,4 +1,4 @@
-package PhoneShop;
+package Main;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
