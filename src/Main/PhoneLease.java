@@ -12,7 +12,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
         "terms",
         "leaseRate",
         "pricePerTerm",
-        "startDate"
+        "contractStartDate"
 })
 public class PhoneLease
 {
@@ -30,7 +30,7 @@ public class PhoneLease
     protected String leaseRate;
     @XmlElement(required = true)
     protected String pricePerTerm;
-    @XmlElement(name = "startDate", required = true)
+    @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar contractStartDate;
 
