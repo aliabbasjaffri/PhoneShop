@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--  Our one element xml document, describing one instance of a Library object -->
-<phoneShop>      <!-- the one libraryobject conatining alle the info -->
-	<shopName>My Big PhoneShop</shopName>            <!--  here follow all attributes of the mylibrary object -->
+<!--  Our one element xml document, describing one instance of a phoneshop object -->
+<phoneShop>      <!-- the one phoneshopobject conatining alle the info -->
+	<shopName>My Big PhoneShop</shopName>            <!--  here follow all attributes of the myphoneshop object -->
 	<address>Lahore, Pakistan</address>
 	<contactNumber>03314960870</contactNumber>
 
@@ -159,36 +159,36 @@
 
     <!-- /////////////////Phone Sale-->
     <PhoneSale>
-        <receiptID>Joe</receiptID>
-        <customerID>Average</customerID>
-        <salesManID>25</salesManID>
-        <phoneID>J_AV_25</phoneID>
+        <receiptID>RepID998800</receiptID>
+        <customerID>ID009999</customerID>
+        <salesManID>ID223322</salesManID>
+        <phoneID>119922991133</phoneID>
         <saleDate>01012016</saleDate>
     </PhoneSale>
 
     <PhoneSale>
-        <receiptID>Joe</receiptID>
-        <customerID>Average</customerID>
-        <salesManID>25</salesManID>
-        <phoneID>J_AV_25</phoneID>
+        <receiptID>RepID445566</receiptID>
+        <customerID>ID009900</customerID>
+        <salesManID>ID110011</salesManID>
+        <phoneID>334455667711</phoneID>
         <saleDate>01012016</saleDate>
     </PhoneSale>
 
     <PhoneSale>
-        <receiptID>Joe</receiptID>
-        <customerID>Average</customerID>
-        <salesManID>25</salesManID>
-        <phoneID>J_AV_25</phoneID>
+        <receiptID>RepID445588</receiptID>
+        <customerID>ID001122</customerID>
+        <salesManID>ID778899</salesManID>
+        <phoneID>001199228833</phoneID>
         <saleDate>01012016</saleDate>
     </PhoneSale>
 
     <PhoneSale>
-        <receiptID>Joe</receiptID>
-        <customerID>Average</customerID>
-        <salesManID>25</salesManID>
-        <phoneID>J_AV_25</phoneID>
+        <receiptID>RepID445566</receiptID>
+        <customerID>ID001199</customerID>
+        <salesManID>ID332211</salesManID>
+        <phoneID>110022993377</phoneID>
         <saleDate>01012016</saleDate>
     </PhoneSale>
     <!-- /////////////////End Phone Sale-->
 
-</phoneShop>     <!-- closing the one libraryobject conatining alle the info -->
+</phoneShop>     <!-- closing the one phoneshopobject conatining alle the info -->
