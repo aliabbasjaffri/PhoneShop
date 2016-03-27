@@ -339,7 +339,7 @@ class Reasoner {
 				|| (questionType.equals("intent") && classtype == theRecentThing))
 		{
 			// Can I lend the book or not (Can I lent "it" or not)
-			answer=("You "+ BookAvailable(classtype, input));
+			answer=("You "+ phoneAvailable(classtype, input));
 			Answered = 1; // An answer was given
 		}
 
@@ -361,92 +361,60 @@ class Reasoner {
 	// Methods to generate answers for the different kinds of Questions
 	// Answer a question of the "Is a book or "it (meaning a book) available ?" kind
 
-	private String BookAvailable(List thelist, String input) {
+	private String phoneAvailable(List theList, String input) {
 
-		boolean available =true;
+		boolean available = false;
 		String answer ="";
-		Book curbook = new Book();
-		String booktitle="";
+		Phone phone;
+		String phoneInformation="";
 
-		if (thelist == thePhoneList) {                      //This is a candidate for a name change
-
-			int counter = 0;
-
-			//Identify which book is asked for 
-
-			for (int i = 0; i < thelist.size(); i++) {
-
-				curbook = (Book) thelist.get(i);         //This is a candidate for a name change
-
-				if (input.contains(curbook.getTitle().toLowerCase())            //This is a candidate for a name change
-						|| input.contains(curbook.getIsbn().toLowerCase())      //This is a candidate for a name change
-						|| input.contains(curbook.getAutor().toLowerCase())) {  //This is a candidate for a name change
-
-					counter = i;
-
-					Currentindex = counter;
+		if (theList == thePhoneList) {                      //This is a candidate for a name change
+			//Identify which phone is asked for
+			for (Object aPhone : theList){
+				phone = (Phone) aPhone;         //This is a candidate for a name change
+				if (input.contains(phone.getName().toLowerCase())            //This is a candidate for a name change
+						|| input.contains(phone.getMake().toLowerCase())      //This is a candidate for a name change
+						|| input.contains(phone.getModel().toLowerCase())) {  //This is a candidate for a name change
 					theRecentThing.clear(); 									//Clear it before adding (changing) the
 					classtype = thePhoneList;                                    //This is a candidate for a name change
-					theRecentThing.add(classtype.get(Currentindex));
-					booktitle=curbook.getTitle();
-										
-					if (input.contains(curbook.getTitle().toLowerCase())){input = input.replace(curbook.getTitle().toLowerCase(), "<b>"+curbook.getTitle().toLowerCase()+"</b>");}          
-					if (input.contains(curbook.getIsbn().toLowerCase())) {input = input.replace(curbook.getIsbn().toLowerCase(), "<b>"+curbook.getIsbn().toLowerCase()+"</b>");}     
-					if (input.contains(curbook.getAutor().toLowerCase())){input = input.replace(curbook.getAutor().toLowerCase(), "<b>"+curbook.getAutor().toLowerCase()+"</b>");}
-										
-					i = thelist.size() + 1; 									// force break
+					theRecentThing.add(phone);
+					phoneInformation = phone.getName();
+					if (input.contains(phone.getName().toLowerCase())){input = input.replace(phone.getName().toLowerCase(), "<b>"+phone.getName().toLowerCase()+"</b>");}
+					if (input.contains(phone.getMake().toLowerCase())) {input = input.replace(phone.getMake().toLowerCase(), "<b>"+phone.getMake().toLowerCase()+"</b>");}
+					if (input.contains(phone.getModel().toLowerCase())){input = input.replace(phone.getModel().toLowerCase(), "<b>"+phone.getModel().toLowerCase()+"</b>");}
+					available = true;
+					break; 									// force break
 				}
 			}
 		}
-
-		// maybe other way round or double 
-
-		if (thelist == theRecentThing && theRecentThing.get(0) != null) {
-
+		// maybe other way round or double
+		if (theList == theRecentThing && theRecentThing.get(0) != null) {
 			if (theRecentThing.get(0).getClass().getSimpleName()
-					.toLowerCase().equals("book")) {                  //This is a candidate for a name change
-
-				curbook = (Book) theRecentThing.get(0);               //This is a candidate for a name change		
-				booktitle=curbook.getTitle();
-			}
-		}
-
-		// check all lendings if they contain the books ISBN
-
-		for (int i = 0; i < thePhoneSaleList.size(); i++) {
-
-			Lending curlend = (Lending) thePhoneSaleList.get(i);         //This is a candidate for a name change
-
-			// If there is a lending with the books ISBN, the book is not available
-
-			if ( curbook.getIsbn().toLowerCase().equals(curlend.getIsbn().toLowerCase())) {           //This is a candidate for a name change
-
-				input = input.replace(curlend.getIsbn().toLowerCase(), "<b>"+curlend.getIsbn().toLowerCase()+"</b>");
-				
-				available=false;
-				i = thelist.size() + 1; 									// force break
+					.toLowerCase().equals("phone")) {                  //This is a candidate for a name change
+				phone = (Phone) theRecentThing.get(0);               //This is a candidate for a name change
+				phoneInformation = phone.getName();
+				available = true;
 			}
 		}
 
 		if(available){
-			answer="can lend the book.";
+			answer = "Phone is Available.";
 		}
 		else{ 
-			answer="cannot lend the book as someone else has lent it at the moment.";
+			answer = "Phone is not available.";
 		}
 
 		URL = "http://wordnetweb.princeton.edu/perl/webwn?o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&s="
 				+ classtype.get(0).getClass().getSimpleName().toLowerCase();
 		URL2 = "http://en.wikipedia.org/wiki/"
-				+ booktitle;
+				+ phoneInformation;
 		System.out.println("URL = "+URL);
 		tooltipstring = readwebsite(URL);
 		String html = "<html>" + tooltipstring + "</html>";
 		Myface.setmytooltip(html);
 		Myface.setmyinfobox(URL2);
 
-		return(answer);
-
+		return answer;
 	}
 
 	// Answer a question of the "How many ...." kind 
@@ -620,7 +588,6 @@ class Reasoner {
 		return yesOrNo;
 	}
 
-
 	//  Method to retrieve the location information from the object (Where is...) kind
 	private String Location(List classTypeList, String input) {
 
@@ -699,21 +666,17 @@ class Reasoner {
 		return location;
 	}
 
-
 	String testit() {   // test the loaded knowledge by querying for books written by dostoyjewski
-
 		String answer = "";
-
-		System.out.println("Book List = " + thePhoneList.size());  //This is a candidate for a name change
-
+		System.out.println("Phone List = " + thePhoneList.size());  //This is a candidate for a name change
 		for (Object aThePhoneList : thePhoneList) {   // check each book in the List, //This is a candidate for a name change
-			Book curbook = (Book) aThePhoneList;    // cast list element to Book Class //This is a candidate for a name change
-			System.out.println("Testing Book" + curbook.getAutor());
+			Phone phone = (Phone) aThePhoneList;    // cast list element to Book Class //This is a candidate for a name change
+			System.out.println("Testing Phone" + phone.getMake());
 
-			if (curbook.getAutor().equalsIgnoreCase("dostoyjewski")) {     // check for the author //This is a candidate for a name change
+			if (phone.getName().equalsIgnoreCase("6s")) {     // check for the author //This is a candidate for a name change
 
-				answer = "A book written by " + curbook.getAutor() + "\n"  //This is a candidate for a name change
-						+ " is for example the classic " + curbook.getTitle()      //This is a candidate for a name change
+				answer = "A phone by " + phone.getMake() + "\n"  //This is a candidate for a name change
+						+ " is a classic example for a " + phone.getType()      //This is a candidate for a name change
 						+ ".";
 			}
 		}
