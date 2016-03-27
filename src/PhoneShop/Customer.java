@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Customer", propOrder = {
         "customerID",
+        "city",
         "emailAddress",
         "mobileNumber",
         "receiptID"
@@ -13,6 +14,8 @@ public class Customer extends Person
 {
     @XmlElement(required = true)
     protected String customerID;
+    @XmlElement(required = true)
+    protected String city;
     @XmlElement(required = true)
     protected String emailAddress;
     @XmlElement(required = true)
@@ -26,6 +29,14 @@ public class Customer extends Person
 
     public void setCustomerID(String customerID) {
         this.customerID = customerID;
+    }
+
+    public String getCity() {
+        return customerID;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getEmailAddress() {
