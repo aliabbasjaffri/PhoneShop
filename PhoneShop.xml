@@ -54,69 +54,60 @@
     <!-- /////////////////Customer-->
 
     <Customer>
-        <name>001</name>
-        <age>S_SO_68</age>
-        <dateOfBirth>12345Sn</dateOfBirth>
-        <gender>01102011</gender>
-        <customerID>22102011</customerID>
-        <city>22102011</city>
-        <emailAddress>22102011</emailAddress>
-        <mobileNumber>22102011</mobileNumber>
-        <receiptID>22102011</receiptID>
+        <name>Ali Abbas Jaffri</name>
+        <age>25</age>
+        <dateOfBirth>18011991</dateOfBirth>
+        <gender>Male</gender>
+        <customerID>ID112233</customerID>
+        <city>Lahore</city>
+        <emailAddress>ali@abbas.com</emailAddress>
+        <mobileNumber>03314960870</mobileNumber>
+        <receiptID>RepID112233</receiptID>
     </Customer>
 
     <Customer>
-        <name>001</name>
-        <age>S_SO_68</age>
-        <dateOfBirth>12345Sn</dateOfBirth>
-        <gender>01102011</gender>
-        <customerID>22102011</customerID>
-        <city>22102011</city>
-        <emailAddress>22102011</emailAddress>
-        <mobileNumber>22102011</mobileNumber>
-        <receiptID>22102011</receiptID>
+        <name>Zaib Ali</name>
+        <age>23</age>
+        <dateOfBirth>21031992</dateOfBirth>
+        <gender>Male</gender>
+        <customerID>ID113344</customerID>
+        <city>Lahore</city>
+        <emailAddress>zaib@ali.com</emailAddress>
+        <mobileNumber>004455566778844</mobileNumber>
+        <receiptID>RepID445566</receiptID>
     </Customer>
 
     <Customer>
-        <name>001</name>
-        <age>S_SO_68</age>
-        <dateOfBirth>12345Sn</dateOfBirth>
-        <gender>01102011</gender>
-        <customerID>22102011</customerID>
-        <city>22102011</city>
-        <emailAddress>22102011</emailAddress>
-        <mobileNumber>22102011</mobileNumber>
-        <receiptID>22102011</receiptID>
+        <name>Jawad Hardeez</name>
+        <age>100</age>
+        <dateOfBirth>01011900</dateOfBirth>
+        <gender>Female</gender>
+        <customerID>ID667788</customerID>
+        <city>Pyrakantha</city>
+        <emailAddress>jawad@hardees.com</emailAddress>
+        <mobileNumber>032124355655</mobileNumber>
+        <receiptID>RepID220055</receiptID>
     </Customer>
 
     <!-- /////////////////End Customer-->
 
     <!-- /////////////////Salesman-->
     <Salesman>
-        <name>001</name>
-        <age>S_SO_68</age>
-        <dateOfBirth>12345Sn</dateOfBirth>
-        <gender>12345Sn</gender>
-        <salesManID>01102011</salesManID>
-        <department>22102011</department>
+        <name>SalesMan 1</name>
+        <age>30</age>
+        <dateOfBirth>01012000</dateOfBirth>
+        <gender>Female</gender>
+        <salesManID>ID090911</salesManID>
+        <department>Apple Phones</department>
     </Salesman>
 
     <Salesman>
-        <name>001</name>
-        <age>S_SO_68</age>
-        <dateOfBirth>12345Sn</dateOfBirth>
-        <gender>12345Sn</gender>
-        <salesManID>01102011</salesManID>
-        <department>22102011</department>
-    </Salesman>
-
-    <Salesman>
-        <name>001</name>
-        <age>S_SO_68</age>
-        <dateOfBirth>12345Sn</dateOfBirth>
-        <gender>12345Sn</gender>
-        <salesManID>01102011</salesManID>
-        <department>22102011</department>
+        <name>Salesman 2</name>
+        <age>25</age>
+        <dateOfBirth>01011995</dateOfBirth>
+        <gender>Female</gender>
+        <salesManID>ID556677</salesManID>
+        <department>Android Phones</department>
     </Salesman>
     <!-- /////////////////End Salesman-->
 
