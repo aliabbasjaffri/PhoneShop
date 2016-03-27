@@ -113,46 +113,46 @@
 
     <!-- /////////////////Phone Lease-->
 	<PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<receiptID>RepID112211</receiptID>
+		<customerID>ID884466</customerID>
+		<salesManID>ID009988</salesManID>
+		<phoneID>112233445511</phoneID>
+		<terms>12</terms>
+		<leaseRate>10</leaseRate>
+		<pricePerTerm>10000</pricePerTerm>
 		<contractStartDate>11022015</contractStartDate>
 	</PhoneLease>
 
     <PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<receiptID>RepID998877</receiptID>
+		<customerID>ID554466</customerID>
+		<salesManID>ID335500</salesManID>
+		<phoneID>887744003311</phoneID>
+		<terms>18</terms>
+		<leaseRate>10</leaseRate>
+		<pricePerTerm>15000</pricePerTerm>
 		<contractStartDate>11022015</contractStartDate>
 	</PhoneLease>
 
     <PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<receiptID>RepID440000</receiptID>
+		<customerID>ID334433</customerID>
+		<salesManID>ID009988</salesManID>
+		<phoneID>998844663322</phoneID>
+		<terms>24</terms>
+		<leaseRate>20</leaseRate>
+		<pricePerTerm>5000</pricePerTerm>
 		<contractStartDate>11022015</contractStartDate>
 	</PhoneLease>
 
     <PhoneLease>
-		<receiptID>scifiphones</receiptID>
-		<customerID>www.somwhere.uk/scifi</customerID>
-		<salesManID>upper storie left</salesManID>
-		<phoneID>12345Sn4567#375954Fe4567#</phoneID>
-		<terms>12345Sn4567#375954Fe4567#</terms>
-		<leaseRate>12345Sn4567#375954Fe4567#</leaseRate>
-		<pricePerTerm>12345Sn4567#375954Fe4567#</pricePerTerm>
+		<receiptID>RepID995588</receiptID>
+		<customerID>ID990088</customerID>
+		<salesManID>ID665577</salesManID>
+		<phoneID>884477221133</phoneID>
+		<terms>6</terms>
+		<leaseRate>20</leaseRate>
+		<pricePerTerm>20000</pricePerTerm>
 		<contractStartDate>11022015</contractStartDate>
 	</PhoneLease>
     <!-- /////////////////End Phone Lease-->
