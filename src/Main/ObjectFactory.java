@@ -36,53 +36,6 @@ public class ObjectFactory {
     private static final String localpart = "phoneShop";
     private final static QName _PhoneShop_QNAME = new QName("", localpart);
 
-    /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: Main
-     * 
-     */
-    public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link PhoneShop }
-     * 
-     */
-    public Library createLibrary() {
-        return new Library();
-    }
-
-    /**
-     * Create an instance of {@link Member }
-     * 
-     */
-    public Member createMember() {
-        return new Member();
-    }
-
-    /**
-     * Create an instance of {@link Catalog }
-     * 
-     */
-    public Catalog createCatalog() {
-        return new Catalog();
-    }
-
-    /**
-     * Create an instance of {@link Lending }
-     * 
-     */
-    public Lending createLending() {
-        return new Lending();
-    }
-
-    /**
-     * Create an instance of {@link Book }
-     * 
-     */
-    public Book createBook() {
-        return new Book();
-    }
-
     public Phone createPhone() { return new Phone(); }
 
     public PhoneLease createPhoneLease() { return new PhoneLease(); }
