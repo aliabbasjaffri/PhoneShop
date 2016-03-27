@@ -8,12 +8,9 @@
 
 package Main;
 
-import PhoneShop.PhoneShop;
-
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
 import javax.xml.namespace.QName;
-import PhoneShop.*;
 
 
 /**
