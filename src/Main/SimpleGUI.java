@@ -93,9 +93,9 @@ public class SimpleGUI {
 		Main.setSize(1200, 800);
 		Main.setVisible(true);                               // Don't forget
 		
-		dialoghistory.add("<H2>Welcome to the Library Helpdesk, please type your question.</H2> " +
-				          "<H3>I can inform you about: The library, its books, its members and " +
-				          "the current lendings. Just ask me.</H3><br>");
+		dialoghistory.add("<H2>Welcome to the PhoneShop, please type your question.</H2> " +
+				          "<H3>I can inform you about: The PhoneShop, Phones, its Customers, Its Salesman and " +
+				          "information about Phone Lending/Sale. Just ask me.</H3><br>");
 		
 		Output.setText(dialoghistory.firstElement());
 		Input.requestFocusInWindow();
