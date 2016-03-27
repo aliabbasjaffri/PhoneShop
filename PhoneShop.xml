@@ -7,47 +7,47 @@
 
     <!-- /////////////////Phones Section-->
     <Phone>                                       <!-- An Instance of a phone -->
-		<phoneID>Dostoyjewski</phoneID>              <!-- And its attributes -->
-		<IMEI>War and Peace</IMEI>
-		<make>12345Sn</make>
-		<model>shelf 3 row 4</model>
-		<makeYear>001</makeYear>
-		<price>001</price>
-		<available>001</available>
-		<type>001</type>
+		<phoneID>112233445566</phoneID>              <!-- And its attributes -->
+		<IMEI>IMEI112233445566</IMEI>
+		<make>Apple</make>
+		<model>iPhone 6S</model>
+		<makeYear>2015</makeYear>
+		<price>80000</price>
+		<available>Yes</available>
+		<type>Smart Phone</type>
 	</Phone>
 
     <Phone>                                       <!-- An Instance of a phone -->
-		<phoneID>Dostoyjewski</phoneID>              <!-- And its attributes -->
-		<IMEI>War and Peace</IMEI>
-		<make>12345Sn</make>
-		<model>shelf 3 row 4</model>
-		<makeYear>001</makeYear>
-		<price>001</price>
-		<available>001</available>
-		<type>001</type>
+		<phoneID>112211223344</phoneID>              <!-- And its attributes -->
+		<IMEI>IMEI112211223344</IMEI>
+		<make>Apple</make>
+		<model>iPhone 6S Plus</model>
+		<makeYear>2015</makeYear>
+		<price>90000</price>
+		<available>Yes</available>
+		<type>Smart Phone</type>
 	</Phone>
 
     <Phone>                                       <!-- An Instance of a phone -->
-		<phoneID>Dostoyjewski</phoneID>              <!-- And its attributes -->
-		<IMEI>War and Peace</IMEI>
-		<make>12345Sn</make>
-		<model>shelf 3 row 4</model>
-		<makeYear>001</makeYear>
-		<price>001</price>
-		<available>001</available>
-		<type>001</type>
+		<phoneID>119988118822</phoneID>              <!-- And its attributes -->
+		<IMEI>IMEI119988118822</IMEI>
+		<make>Apple</make>
+		<model>iPhone 6</model>
+		<makeYear>2015</makeYear>
+		<price>80000</price>
+		<available>Yes</available>
+		<type>Smart Phone</type>
 	</Phone>
 
     <Phone>                                       <!-- An Instance of a phone -->
-		<phoneID>Dostoyjewski</phoneID>              <!-- And its attributes -->
-		<IMEI>War and Peace</IMEI>
-		<make>12345Sn</make>
-		<model>shelf 3 row 4</model>
-		<makeYear>001</makeYear>
-		<price>001</price>
-		<available>001</available>
-		<type>001</type>
+		<phoneID>223344556677</phoneID>              <!-- And its attributes -->
+		<IMEI>IMEI223344556677</IMEI>
+		<make>Nokia</make>
+		<model>3310i</model>
+		<makeYear>1995</makeYear>
+		<price>1000</price>
+		<available>Yes</available>
+		<type>Unibody Button</type>
 	</Phone>
     <!-- /////////////////End Phones Section-->
 
