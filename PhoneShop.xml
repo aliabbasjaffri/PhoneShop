@@ -48,45 +48,38 @@
 		<type>001</type>
 	</Phone>
 
-	<Member>
-		<surname>Joe</surname>
-		<lastname>Average</lastname>
-		<age>25</age>
-		<memberid>J_AV_25</memberid>
-		
-		<city>London</city>
-		<street>Bond Street</street>
-		<housenumber>14</housenumber>
-		<postcode>L 7</postcode>	
-	  
-	    <haslend>null</haslend>
-	</Member>
-	<Member>
-		<surname>Susan</surname>
-		<lastname>Someone</lastname>
-		<age>68</age>
-		<memberid>S_SO_68</memberid>
-		
-		<city>Ealing</city>
-		<street>Cairn Road</street>
-		<housenumber>17</housenumber>
-		<postcode>W 14</postcode>	
-	    
-	    <haslend>001</haslend>
-	</Member>
-	<Member>
-		<surname>Tim</surname>
-		<lastname>Buktu</lastname>
-		<age>18</age>
-		<memberid>T_BU_99</memberid>
-		
-		<city>Ealing</city>
-		<street>Uxbridge Road</street>
-		<housenumber>111</housenumber>
-		<postcode>W 22</postcode>	
-	    
-	    <haslend>55</haslend>
-	</Member>
+	<PhoneSale>
+		<receiptID>Joe</receiptID>
+		<customerID>Average</customerID>
+		<salesManID>25</salesManID>
+		<phoneID>J_AV_25</phoneID>
+		<saleDate>01012016</saleDate>
+	</PhoneSale>
+
+	<PhoneSale>
+		<receiptID>Joe</receiptID>
+		<customerID>Average</customerID>
+		<salesManID>25</salesManID>
+		<phoneID>J_AV_25</phoneID>
+		<saleDate>01012016</saleDate>
+	</PhoneSale>
+
+	<PhoneSale>
+		<receiptID>Joe</receiptID>
+		<customerID>Average</customerID>
+		<salesManID>25</salesManID>
+		<phoneID>J_AV_25</phoneID>
+		<saleDate>01012016</saleDate>
+	</PhoneSale>
+    
+	<PhoneSale>
+		<receiptID>Joe</receiptID>
+		<customerID>Average</customerID>
+		<salesManID>25</salesManID>
+		<phoneID>J_AV_25</phoneID>
+		<saleDate>01012016</saleDate>
+	</PhoneSale>
+
 	
 	<Catalog>
 		<name>scifiphones</name>
